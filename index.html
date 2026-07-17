@@ -17,7 +17,7 @@ body{background:var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaH
 ::selection{background:rgba(123,92,255,.45)}
 
 /* ===== 极光背景 ===== */
-.aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(90px) saturate(1.2);opacity:.55}
+.aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(90px) saturate(1.6);opacity:.75}
 .aurora i{position:absolute;border-radius:50%}
 .aurora .a1{width:60vw;height:60vw;left:-12vw;top:-18vw;background:radial-gradient(circle at 30% 30%,var(--purple),transparent 62%);animation:drift1 26s ease-in-out infinite alternate}
 .aurora .a2{width:52vw;height:52vw;right:-14vw;top:-14vw;background:radial-gradient(circle at 60% 40%,var(--pink),transparent 60%);animation:drift2 32s ease-in-out infinite alternate}
@@ -26,7 +26,7 @@ body{background:var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaH
 @keyframes drift1{to{transform:translate(9vw,7vh) scale(1.12)}}
 @keyframes drift2{to{transform:translate(-8vw,9vh) scale(.92)}}
 @keyframes drift3{to{transform:translate(6vw,-6vh) scale(1.08)}}
-.veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,13,22,0) 0%,rgba(10,13,22,.72) 46%,rgba(10,13,22,.94) 100%)}
+.veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,13,22,0) 0%,rgba(10,13,22,.5) 46%,rgba(10,13,22,.86) 100%)}
 
 /* ===== 悬浮玻璃棱柱 ===== */
 .prism{position:absolute;z-index:1;pointer-events:none;opacity:.5;background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,.05) 45%,rgba(255,255,255,.16));border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px);box-shadow:0 24px 60px rgba(0,0,0,.35), inset 0 0 30px rgba(255,255,255,.06)}
@@ -52,15 +52,22 @@ nav .links a:hover,nav .links a.on{color:#fff;background:var(--glass2)}
 .hero{position:relative;text-align:center;padding:110px 20px 90px}
 .kicker{font-size:16px;letter-spacing:6px;color:var(--dim);text-transform:uppercase;margin-bottom:26px}
 .hero h1{font-size:clamp(56px,9vw,124px);line-height:1.04;letter-spacing:2px;font-weight:800;color:#f4f5f8}
+.hero h1 .grad{color:#c9a6ff}
 @supports(-webkit-background-clip:text){
 .hero h1{background:linear-gradient(180deg,#ffffff 18%,#c9cede 52%,#6f7688 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .grad{background:linear-gradient(100deg,var(--purple) 0%,var(--pink) 34%,var(--orange) 62%,var(--teal) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 24px rgba(123,92,255,.35))}
 }
 .hero .sub{color:var(--dim);font-size:22px;max-width:640px;margin:26px auto 38px}
 
 /* ===== 信息带 ===== */
 .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);backdrop-filter:blur(8px);margin:0 0 40px}
-.strip .c{padding:26px 30px;border-left:1px solid var(--line)}
+.strip .c{position:relative;padding:26px 30px;border-left:1px solid var(--line)}
 .strip .c:first-child{border-left:0}
+.strip .c::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;opacity:.85}
+.strip .c:nth-child(1)::before{background:linear-gradient(90deg,var(--teal),transparent)}
+.strip .c:nth-child(2)::before{background:linear-gradient(90deg,var(--purple),transparent)}
+.strip .c:nth-child(3)::before{background:linear-gradient(90deg,var(--pink),transparent)}
+.strip .c:nth-child(4)::before{background:linear-gradient(90deg,var(--orange),transparent)}
 .strip .k{font-size:13px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-bottom:6px}
 .strip .v{font-size:26px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
 .strip .v em{font-style:normal;font-size:17px;color:var(--dim);font-weight:400}
@@ -70,12 +77,13 @@ nav .links a:hover,nav .links a.on{color:#fff;background:var(--glass2)}
 .leadpill{display:inline-flex;align-items:center;gap:8px;background:var(--glass2);border:1px solid var(--line);color:#dfe3ec;font-size:15px;letter-spacing:2px;border-radius:999px;padding:7px 20px;backdrop-filter:blur(8px)}
 .sec-head{text-align:center;margin-bottom:44px}
 .sec-head .spark{font-size:26px;color:#fff;opacity:.85;margin-bottom:22px}
-.sec-head h2{font-size:clamp(38px,5.4vw,66px);font-weight:800;letter-spacing:2px;color:#f2f3f7;margin:18px 0 14px}
+.sec-head h2{position:relative;display:inline-block;font-size:clamp(38px,5.4vw,66px);font-weight:800;letter-spacing:2px;color:#f2f3f7;margin:18px 0 14px;padding-bottom:16px}
+.sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:88px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--purple),var(--pink),var(--teal))}
 .sec-head p{color:var(--dim);font-size:20px;max-width:620px;margin:0 auto}
 
 /* ===== 玻璃卡与表格 ===== */
-.card{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);padding:30px 34px;margin:24px 0;backdrop-filter:blur(16px);transition:border-color .3s}
-.card:hover{border-color:rgba(255,255,255,.18)}
+.card{position:relative;background:linear-gradient(rgba(17,21,34,.55),rgba(13,16,26,.55)) padding-box,linear-gradient(135deg,rgba(123,92,255,.55),rgba(255,255,255,.1) 30%,rgba(45,212,191,.45) 70%,rgba(255,92,138,.5)) border-box;border:1px solid transparent;border-radius:var(--r);padding:30px 34px;margin:24px 0;backdrop-filter:blur(18px);box-shadow:0 24px 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.14);transition:box-shadow .35s,transform .35s}
+.card:hover{box-shadow:0 34px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.22);transform:translateY(-3px)}
 h3{font-size:26px;color:#fff;margin:30px 0 12px;font-weight:700}
 .card>h3:first-child{margin-top:0}
 p{margin:12px 0}
@@ -97,8 +105,10 @@ tr:hover td{background:rgba(255,255,255,.03)}
 /* ===== 客户玻璃卡（编号+光晕）===== */
 .grid{display:grid;gap:24px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(430px,1fr))}
-.price-card{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--line);border-radius:26px;padding:32px 30px 58px;backdrop-filter:blur(18px);transition:transform .35s,border-color .35s,box-shadow .35s}
-.price-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.28);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.price-card{position:relative;overflow:hidden;background:linear-gradient(rgba(17,21,34,.5),rgba(13,16,26,.5)) padding-box,linear-gradient(160deg,rgba(255,255,255,.35),rgba(255,255,255,.06) 40%,rgba(255,255,255,.02)) border-box;border:1px solid transparent;border-radius:26px;padding:32px 30px 58px;backdrop-filter:blur(20px);box-shadow:0 20px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.16);transition:transform .3s ease,box-shadow .35s;transform-style:preserve-3d;will-change:transform}
+.price-card:hover{box-shadow:0 34px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.25)}
+.price-card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.09) 46%,rgba(255,255,255,.02) 54%,transparent 70%);background-size:250% 100%;background-position:120% 0;pointer-events:none;transition:background-position 1s ease}
+.price-card:hover::after{background-position:-60% 0}
 .price-card::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;bottom:-190px;right:-120px;filter:blur(70px);opacity:.4;pointer-events:none;transition:opacity .4s}
 .price-card:hover::before{opacity:.65}
 .price-card.glow-teal::before{background:var(--teal)}
@@ -151,7 +161,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
   <div class="prism p1" style="left:4%;top:64%"></div>
   <div class="prism p2" style="right:6%;top:20%"></div>
   <div class="kicker">智算能力一键通 · 服务而非售卖</div>
-  <h1>一键通<br>定价方案</h1>
+  <h1>一键通<br><span class="grad">定价方案</span></h1>
   <p class="sub">开源闭源算力 × 大模型接入 × 画布工作流<br>按客户类型分层定价 · 2026 年 7 月预测稿</p>
   <a class="pill" href="#calc">试算你的月费</a>
 </header>
@@ -181,14 +191,14 @@ tr:hover td{background:rgba(255,255,255,.03)}
 
 <div class="card reveal">
 <table>
-<tr><th>档位</th><th class="num">我方成本</th><th class="num">标准价</th><th class="num">承诺 5 万档</th><th class="num">承诺 10 万档</th><th class="num">承诺 20 万档</th><th>毛利区间</th></tr>
-<tr><td><b>Seedance 720p</b>（海选/预演）</td><td class="num">¥1.0/秒</td><td class="num">¥2.0/秒</td><td class="num">¥1.8</td><td class="num">¥1.6</td><td class="num">¥1.5</td><td>33–50%</td></tr>
-<tr><td>Seedance 1080p（估）</td><td class="num">≈¥2/秒</td><td class="num">¥3.5/秒</td><td class="num">¥3.2</td><td class="num">¥3.0</td><td class="num">¥2.6</td><td>23–43%</td></tr>
-<tr><td><b>Seedance 4K</b>（正片终稿）</td><td class="num">¥5.0/秒</td><td class="num">¥9.0/秒</td><td class="num">¥8.5</td><td class="num">¥8.0</td><td class="num">¥7.0</td><td>29–44%</td></tr>
-<tr><td>720p→4K 本地超分（SeedVR2）</td><td class="num">¥1/秒 + GPU</td><td class="num">¥3.0/秒</td><td class="num">¥2.8</td><td class="num">¥2.6</td><td class="num">¥2.4</td><td>55–65%</td></tr>
-<tr><td>Kling 动作/表情迁移（实拍融合）</td><td class="num">按条</td><td class="num">¥15–30/条(5s)</td><td colspan="3" class="num">项目量另议</td><td>≈40%</td></tr>
+<tr><th>档位</th><th class="num">标准价</th><th class="num">承诺 5 万档</th><th class="num">承诺 10 万档</th><th class="num">承诺 20 万档</th></tr>
+<tr><td><b>720p</b>（海选/预演）</td><td class="num">¥2.0/秒</td><td class="num">¥1.8</td><td class="num">¥1.6</td><td class="num">¥1.5</td></tr>
+<tr><td>1080p</td><td class="num">¥3.5/秒</td><td class="num">¥3.2</td><td class="num">¥3.0</td><td class="num">¥2.6</td></tr>
+<tr><td><b>4K</b>（正片终稿）</td><td class="num">¥9.0/秒</td><td class="num">¥8.5</td><td class="num">¥8.0</td><td class="num">¥7.0</td></tr>
+<tr><td>720p→4K 超分增强</td><td class="num">¥3.0/秒</td><td class="num">¥2.8</td><td class="num">¥2.6</td><td class="num">¥2.4</td></tr>
+<tr><td>动作/表情迁移（实拍融合）</td><td class="num">¥15–30/条(5s)</td><td colspan="3" class="num">项目量另议</td></tr>
 </table>
-<p class="small">1080p 成本为内插估算，签约前以火山引擎实际账单校准。全部档位同时服务于消化 Seedance 年 300 万保底（月 25 万产能线）。</p>
+<p class="small">月承诺消费越高单价越低；正式单价以合同为准。</p>
 </div>
 
 <div class="ok reveal">
@@ -495,6 +505,18 @@ addEventListener('scroll', () => {
   for (const s of secs) if (s.getBoundingClientRect().top < 140) cur = s;
   links.forEach(a => a.classList.toggle('on', cur && a.getAttribute('href') === '#' + cur.id));
 }, {passive: true});
+
+// ===== 卡片 3D 倾斜（鼠标跟随，触屏自动跳过）=====
+if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  document.querySelectorAll('.price-card').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = 'perspective(900px) rotateY(' + (px * 7) + 'deg) rotateX(' + (-py * 6) + 'deg) translateY(-6px)';
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
+}
 
 // ===== 月费试算器 =====
 (() => {
