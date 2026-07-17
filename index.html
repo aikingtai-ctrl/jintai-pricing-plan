@@ -6,108 +6,161 @@
 <title>金泰AI · 一键通服务定价方案</title>
 <style>
 :root{
-  --bg:#0a0a0c; --panel:#121218; --panel2:#17171f; --line:#2a2a35;
-  --gold:#d4a94e; --red:#c0392b; --blue:#4a7fb5; --green:#4ea36a;
-  --txt:#e8e4da; --dim:#9a958a; --big:22px;
+  --bg:#0a0d16; --txt:#eef0f4; --dim:#8b93a7; --line:rgba(255,255,255,.08);
+  --glass:rgba(255,255,255,.045); --glass2:rgba(255,255,255,.07);
+  --purple:#7b5cff; --pink:#ff5c8a; --teal:#2dd4bf; --orange:#ff9d5c;
+  --r:22px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:var(--big);line-height:1.75;overflow-x:hidden}
-#grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
-.wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:20px 28px 120px}
+body{background:var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;font-size:20px;line-height:1.8;overflow-x:hidden}
+::selection{background:rgba(123,92,255,.45)}
 
-/* 拉幕开场 */
-#curtainL,#curtainR{position:fixed;top:0;bottom:0;width:51%;background:linear-gradient(120deg,#16060a,#0b0b0e 70%);z-index:60;transition:transform 1.6s cubic-bezier(.77,0,.18,1)}
-#curtainL{left:0;border-right:2px solid rgba(212,169,78,.4)}
-#curtainR{right:0;border-left:2px solid rgba(212,169,78,.4)}
-body.open #curtainL{transform:translateX(-101%)}
-body.open #curtainR{transform:translateX(101%)}
-#curtainTitle{position:fixed;inset:0;z-index:61;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;transition:opacity .8s;pointer-events:none}
-#curtainTitle .t1{font-size:56px;letter-spacing:12px;color:var(--gold);font-weight:800}
-#curtainTitle .t2{font-size:22px;color:var(--dim);letter-spacing:6px}
-body.open #curtainTitle{opacity:0}
+/* ===== 极光背景 ===== */
+.aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(90px) saturate(1.2);opacity:.55}
+.aurora i{position:absolute;border-radius:50%}
+.aurora .a1{width:60vw;height:60vw;left:-12vw;top:-18vw;background:radial-gradient(circle at 30% 30%,var(--purple),transparent 62%);animation:drift1 26s ease-in-out infinite alternate}
+.aurora .a2{width:52vw;height:52vw;right:-14vw;top:-14vw;background:radial-gradient(circle at 60% 40%,var(--pink),transparent 60%);animation:drift2 32s ease-in-out infinite alternate}
+.aurora .a3{width:46vw;height:46vw;left:8vw;top:16vw;background:radial-gradient(circle at 50% 60%,var(--teal),transparent 58%);animation:drift3 38s ease-in-out infinite alternate;opacity:.8}
+.aurora .a4{width:40vw;height:40vw;right:4vw;top:26vw;background:radial-gradient(circle at 50% 50%,var(--orange),transparent 55%);animation:drift1 44s ease-in-out infinite alternate-reverse;opacity:.55}
+@keyframes drift1{to{transform:translate(9vw,7vh) scale(1.12)}}
+@keyframes drift2{to{transform:translate(-8vw,9vh) scale(.92)}}
+@keyframes drift3{to{transform:translate(6vw,-6vh) scale(1.08)}}
+.veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,13,22,0) 0%,rgba(10,13,22,.72) 46%,rgba(10,13,22,.94) 100%)}
 
-/* 顶部导航 */
-nav{position:sticky;top:0;z-index:50;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:12px 8px;background:rgba(10,10,12,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav a{color:var(--dim);text-decoration:none;font-size:18px;padding:6px 16px;border-radius:20px;border:1px solid transparent;transition:.25s}
-nav a:hover,nav a.on{color:var(--gold);border-color:var(--gold)}
+/* ===== 悬浮玻璃棱柱 ===== */
+.prism{position:absolute;z-index:1;pointer-events:none;opacity:.5;background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,.05) 45%,rgba(255,255,255,.16));border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px);box-shadow:0 24px 60px rgba(0,0,0,.35), inset 0 0 30px rgba(255,255,255,.06)}
+.p1{width:120px;height:190px;clip-path:polygon(28% 0,100% 12%,72% 100%,0 88%);animation:float1 11s ease-in-out infinite}
+.p2{width:150px;height:150px;clip-path:polygon(50% 0,100% 28%,86% 88%,14% 88%,0 28%);animation:float2 13s ease-in-out infinite}
+.p3{width:130px;height:170px;clip-path:polygon(50% 0,100% 78%,12% 100%);animation:float1 15s ease-in-out infinite reverse}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-26px) rotate(4deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(10deg)}50%{transform:translateY(-20px) rotate(-6deg)}}
 
-h1{font-size:52px;letter-spacing:6px;color:var(--gold);text-align:center;margin:46px 0 8px}
-.sub{text-align:center;color:var(--dim);font-size:24px;margin-bottom:6px}
-.date{text-align:center;color:var(--dim);font-size:18px;margin-bottom:40px}
-h2{font-size:38px;color:var(--gold);border-left:10px solid var(--red);padding-left:18px;margin:80px 0 24px;letter-spacing:3px}
-h3{font-size:28px;color:var(--txt);margin:34px 0 14px}
+.wrap{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 28px 120px}
+
+/* ===== 导航 ===== */
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 30px;background:rgba(10,13,22,.55);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+nav .logo{font-size:24px;font-weight:800;letter-spacing:1px}
+nav .logo b{color:#fff}.logo em{font-style:normal;color:var(--teal)}
+nav .links{display:flex;gap:6px;flex-wrap:wrap}
+nav .links a{color:var(--dim);text-decoration:none;font-size:17px;padding:8px 18px;border-radius:999px;transition:.25s}
+nav .links a:hover,nav .links a.on{color:#fff;background:var(--glass2)}
+.pill{display:inline-block;background:#fff;color:#0a0d16;font-weight:700;text-decoration:none;border-radius:999px;padding:10px 26px;font-size:17px;transition:.25s;border:0;cursor:pointer}
+.pill:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,255,255,.18)}
+
+/* ===== Hero ===== */
+.hero{position:relative;text-align:center;padding:110px 20px 90px}
+.kicker{font-size:16px;letter-spacing:6px;color:var(--dim);text-transform:uppercase;margin-bottom:26px}
+.hero h1{font-size:clamp(56px,9vw,124px);line-height:1.04;letter-spacing:2px;font-weight:800;color:#f4f5f8}
+@supports(-webkit-background-clip:text){
+.hero h1{background:linear-gradient(180deg,#ffffff 18%,#c9cede 52%,#6f7688 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+}
+.hero .sub{color:var(--dim);font-size:22px;max-width:640px;margin:26px auto 38px}
+
+/* ===== 信息带 ===== */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);backdrop-filter:blur(8px);margin:0 0 40px}
+.strip .c{padding:26px 30px;border-left:1px solid var(--line)}
+.strip .c:first-child{border-left:0}
+.strip .k{font-size:13px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-bottom:6px}
+.strip .v{font-size:26px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.strip .v em{font-style:normal;font-size:17px;color:var(--dim);font-weight:400}
+
+/* ===== 章节标题 ===== */
+.sec{padding-top:96px}
+.leadpill{display:inline-flex;align-items:center;gap:8px;background:var(--glass2);border:1px solid var(--line);color:#dfe3ec;font-size:15px;letter-spacing:2px;border-radius:999px;padding:7px 20px;backdrop-filter:blur(8px)}
+.sec-head{text-align:center;margin-bottom:44px}
+.sec-head .spark{font-size:26px;color:#fff;opacity:.85;margin-bottom:22px}
+.sec-head h2{font-size:clamp(38px,5.4vw,66px);font-weight:800;letter-spacing:2px;color:#f2f3f7;margin:18px 0 14px}
+.sec-head p{color:var(--dim);font-size:20px;max-width:620px;margin:0 auto}
+
+/* ===== 玻璃卡与表格 ===== */
+.card{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);padding:30px 34px;margin:24px 0;backdrop-filter:blur(16px);transition:border-color .3s}
+.card:hover{border-color:rgba(255,255,255,.18)}
+h3{font-size:26px;color:#fff;margin:30px 0 12px;font-weight:700}
+.card>h3:first-child{margin-top:0}
 p{margin:12px 0}
 .dim{color:var(--dim)}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px 32px;margin:22px 0;transition:border-color .3s}
-.card:hover{border-color:rgba(212,169,78,.45)}
-.grid{display:grid;gap:22px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:21px}
-th{background:var(--panel2);color:var(--gold);padding:14px 12px;text-align:left;border-bottom:2px solid var(--gold);font-size:20px}
+.small{font-size:17px;color:var(--dim)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:19px}
+th{color:var(--dim);font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.16)}
 td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-tr:hover td{background:#1a1a24}
+tr:last-child td{border-bottom:0}
+tr:hover td{background:rgba(255,255,255,.03)}
 .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.tag{display:inline-block;padding:3px 14px;border-radius:20px;font-size:17px;margin:2px 4px 2px 0;white-space:nowrap}
-.t-gold{background:rgba(212,169,78,.15);color:var(--gold);border:1px solid var(--gold)}
-.t-red{background:rgba(192,57,43,.18);color:#e07b6e;border:1px solid var(--red)}
-.t-blue{background:rgba(74,127,181,.18);color:#8ab4dd;border:1px solid var(--blue)}
-.warn{border-left:8px solid var(--red);background:rgba(192,57,43,.08);padding:18px 24px;border-radius:0 12px 12px 0;margin:18px 0}
-.ok{border-left:8px solid var(--green);background:rgba(78,163,106,.08);padding:18px 24px;border-radius:0 12px 12px 0;margin:18px 0}
-.price-card{background:linear-gradient(160deg,#17171f,#0e0e14);border:1px solid var(--line);border-radius:16px;padding:28px 26px;transition:transform .35s,border-color .35s,box-shadow .35s}
-.price-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.5)}
-.price-card .name{font-size:30px;color:var(--gold);margin-bottom:6px}
-.price-card .range{font-size:40px;font-weight:800;color:var(--txt);margin:10px 0}
-.price-card .range small{font-size:22px;color:var(--dim);font-weight:400}
+.tag{display:inline-block;padding:3px 15px;border-radius:999px;font-size:14px;margin:2px 5px 2px 0;white-space:nowrap;border:1px solid var(--line);background:var(--glass2);color:#dfe3ec;letter-spacing:1px}
+.tag.gold{color:#ffd9a0;border-color:rgba(255,157,92,.5)}
+.tag.red{color:#ff9db4;border-color:rgba(255,92,138,.5)}
+.tag.blue{color:#9ecdf0;border-color:rgba(74,127,181,.6)}
+.warn{border:1px solid rgba(255,92,138,.35);background:linear-gradient(160deg,rgba(255,92,138,.08),rgba(255,92,138,.02));border-radius:var(--r);padding:22px 28px;margin:22px 0;backdrop-filter:blur(12px)}
+.ok{border:1px solid rgba(45,212,191,.35);background:linear-gradient(160deg,rgba(45,212,191,.08),rgba(45,212,191,.02));border-radius:var(--r);padding:22px 28px;margin:22px 0;backdrop-filter:blur(12px)}
+
+/* ===== 客户玻璃卡（编号+光晕）===== */
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(430px,1fr))}
+.price-card{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--line);border-radius:26px;padding:32px 30px 58px;backdrop-filter:blur(18px);transition:transform .35s,border-color .35s,box-shadow .35s}
+.price-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.28);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.price-card::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;bottom:-190px;right:-120px;filter:blur(70px);opacity:.4;pointer-events:none;transition:opacity .4s}
+.price-card:hover::before{opacity:.65}
+.price-card.glow-teal::before{background:var(--teal)}
+.price-card.glow-pink::before{background:var(--pink)}
+.price-card.glow-purple::before{background:var(--purple)}
+.price-card.glow-orange::before{background:var(--orange)}
+.price-card .no{position:absolute;right:26px;bottom:14px;font-size:44px;font-weight:800;color:rgba(255,255,255,.22);letter-spacing:2px}
+.price-card .name{font-size:27px;color:#fff;font-weight:700;margin-bottom:6px}
+.price-card .range{font-size:40px;font-weight:800;color:#fff;margin:8px 0;letter-spacing:1px}
+.price-card .range small{font-size:20px;color:var(--dim);font-weight:400}
 .price-card td:first-child{white-space:nowrap;color:var(--dim)}
 .price-card .num{white-space:normal}
-.small{font-size:18px;color:var(--dim)}
-.foot{margin-top:90px;text-align:center;color:var(--dim);font-size:17px;border-top:1px solid var(--line);padding-top:30px}
 
-/* 顶部数字带 */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin:36px 0}
-.stats .s{background:linear-gradient(160deg,#17171f,#0e0e14);border:1px solid var(--line);border-radius:14px;padding:24px 20px;text-align:center}
-.stats .v{font-size:44px;color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums}
-.stats .v em{font-style:normal;font-size:22px;color:var(--dim)}
-.stats .k{font-size:19px;color:var(--dim);margin-top:6px}
+/* ===== 试算器 ===== */
+.calc{position:relative;overflow:hidden;background:var(--glass);border:1px solid rgba(255,255,255,.16);border-radius:26px;padding:36px;backdrop-filter:blur(20px)}
+.calc::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;top:-240px;left:-140px;background:var(--purple);filter:blur(90px);opacity:.35;pointer-events:none}
+.calc .row{position:relative;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:16px 0}
+.calc label{min-width:230px;color:var(--dim);font-size:19px}
+.calc input[type=range]{flex:1;min-width:200px;accent-color:#fff;height:5px}
+.calc .val{min-width:110px;color:#fff;font-weight:700;font-size:23px;text-align:right;font-variant-numeric:tabular-nums}
+.calc .out{position:relative;display:flex;gap:26px;flex-wrap:wrap;margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+.calc .out div{flex:1;min-width:200px}
+.calc .out .n{font-size:40px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.calc .out .l{font-size:16px;color:var(--dim)}
 
-/* 滚动显现 */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+/* ===== 显现动画 ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:none}
 
-/* 试算器 */
-.calc{background:linear-gradient(135deg,#1b1509,#12100a);border:2px solid var(--gold);border-radius:16px;padding:32px}
-.calc .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:16px 0}
-.calc label{min-width:220px;color:var(--dim);font-size:20px}
-.calc input[type=range]{flex:1;min-width:200px;accent-color:var(--gold);height:6px}
-.calc .val{min-width:120px;color:var(--gold);font-weight:700;font-size:24px;text-align:right;font-variant-numeric:tabular-nums}
-.calc .out{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid rgba(212,169,78,.35)}
-.calc .out div{flex:1;min-width:200px}
-.calc .out .n{font-size:42px;color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums}
-.calc .out .l{font-size:18px;color:var(--dim)}
-@media(max-width:760px){h1{font-size:32px}h2{font-size:28px}body{font-size:19px}table{font-size:17px}#curtainTitle .t1{font-size:32px;letter-spacing:6px}}
+.foot{margin-top:110px;text-align:center;color:var(--dim);font-size:16px;border-top:1px solid var(--line);padding-top:32px;letter-spacing:2px}
+@media(max-width:760px){body{font-size:18px}table{font-size:16px}nav .links{display:none}.strip .c{border-left:0;border-top:1px solid var(--line)}}
 </style>
 </head>
 <body>
-<canvas id="grain"></canvas>
-<div id="curtainL"></div><div id="curtainR"></div>
-<div id="curtainTitle"><div class="t1">一键通 · 定价方案</div><div class="t2">金泰AI智算中心 出品</div></div>
+<div class="aurora"><i class="a1"></i><i class="a2"></i><i class="a3"></i><i class="a4"></i></div>
+<div class="veil"></div>
 
 <nav>
-<a href="#s1">视频生成池</a><a href="#s2">计价四件套</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s4">通用规则</a><a href="#s5">打包价</a>
+  <div class="logo"><b>金泰AI<em>.</em></b></div>
+  <div class="links">
+    <a href="#s1">视频生成池</a><a href="#s2">计价体系</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s5">打包价</a>
+  </div>
+  <a class="pill" href="#s5">查看打包价</a>
 </nav>
 
 <div class="wrap">
 
-<h1>一键通服务 · 定价方案</h1>
-<div class="sub">金泰AI平台 —— 开源闭源算力 × 大模型接入 × 画布工作流，按客户类型分层定价</div>
-<div class="date">2026年7月 预测稿 · 金额单位：人民币</div>
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="prism p1" style="left:4%;top:64%"></div>
+  <div class="prism p2" style="right:6%;top:20%"></div>
+  <div class="kicker">智算能力一键通 · 服务而非售卖</div>
+  <h1>一键通<br>定价方案</h1>
+  <p class="sub">开源闭源算力 × 大模型接入 × 画布工作流<br>按客户类型分层定价 · 2026 年 7 月预测稿</p>
+  <a class="pill" href="#calc">试算你的月费</a>
+</header>
 
-<div class="stats reveal">
-  <div class="s"><div class="v">¥<span class="cnt" data-t="1" data-d="0">0</span><em>/秒</em></div><div class="k">Seedance 720p 生成成本</div></div>
-  <div class="s"><div class="v">¥<span class="cnt" data-t="5" data-d="0">0</span><em>/秒</em></div><div class="k">Seedance 4K 生成成本</div></div>
-  <div class="s"><div class="v"><span class="cnt" data-t="55" data-d="0">0</span><em>–65%</em></div><div class="k">720p→4K 本地超分毛利</div></div>
-  <div class="s"><div class="v"><span class="cnt" data-t="95" data-d="0">0</span><em>%</em></div><div class="k">四工厂目标利用率（卡时成本减半）</div></div>
+<div class="strip reveal">
+  <div class="c"><div class="k">720P 生成成本</div><div class="v">¥<span class="cnt" data-t="1" data-d="0">0</span><em>/秒</em></div></div>
+  <div class="c"><div class="k">4K 生成成本</div><div class="v">¥<span class="cnt" data-t="5" data-d="0">0</span><em>/秒</em></div></div>
+  <div class="c"><div class="k">超分档毛利</div><div class="v"><span class="cnt" data-t="55" data-d="0">0</span><em>–65%</em></div></div>
+  <div class="c"><div class="k">目标利用率</div><div class="v"><span class="cnt" data-t="95" data-d="0">0</span><em>%</em></div></div>
 </div>
 
 <div class="warn reveal">
@@ -117,33 +170,48 @@ tr:hover td{background:#1a1a24}
 ③ <b>专线由客户自申自用</b>（责任归位），金泰只收机房侧接入配合费 1–3 万/次，不承诺、不转售国际线路。
 </div>
 
-<h2 id="s1">壹 · 视频生成池价目（核心池，Seedance 双档）</h2>
+<!-- ===== 壹 视频池 ===== -->
+<section class="sec" id="s1">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">核心池 · Seedance 双档</span>
+  <h2>视频生成池价目</h2>
+  <p>720p 海选 + 4K 终稿的两段式出片，是全方案的核心机制与毛利来源。</p>
+</div>
 
 <div class="card reveal">
 <table>
-<tr><th>档位</th><th class="num">我方成本</th><th class="num">标准价</th><th class="num">月承诺 5 万档</th><th class="num">月承诺 10 万档</th><th class="num">月承诺 20 万档</th><th>毛利区间</th></tr>
+<tr><th>档位</th><th class="num">我方成本</th><th class="num">标准价</th><th class="num">承诺 5 万档</th><th class="num">承诺 10 万档</th><th class="num">承诺 20 万档</th><th>毛利区间</th></tr>
 <tr><td><b>Seedance 720p</b>（海选/预演）</td><td class="num">¥1.0/秒</td><td class="num">¥2.0/秒</td><td class="num">¥1.8</td><td class="num">¥1.6</td><td class="num">¥1.5</td><td>33–50%</td></tr>
 <tr><td>Seedance 1080p（估）</td><td class="num">≈¥2/秒</td><td class="num">¥3.5/秒</td><td class="num">¥3.2</td><td class="num">¥3.0</td><td class="num">¥2.6</td><td>23–43%</td></tr>
 <tr><td><b>Seedance 4K</b>（正片终稿）</td><td class="num">¥5.0/秒</td><td class="num">¥9.0/秒</td><td class="num">¥8.5</td><td class="num">¥8.0</td><td class="num">¥7.0</td><td>29–44%</td></tr>
-<tr><td>720p→4K 本地超分（增强工厂 SeedVR2）</td><td class="num">¥1/秒 + GPU</td><td class="num">¥3.0/秒</td><td class="num">¥2.8</td><td class="num">¥2.6</td><td class="num">¥2.4</td><td>55–65%</td></tr>
+<tr><td>720p→4K 本地超分（SeedVR2）</td><td class="num">¥1/秒 + GPU</td><td class="num">¥3.0/秒</td><td class="num">¥2.8</td><td class="num">¥2.6</td><td class="num">¥2.4</td><td>55–65%</td></tr>
 <tr><td>Kling 动作/表情迁移（实拍融合）</td><td class="num">按条</td><td class="num">¥15–30/条(5s)</td><td colspan="3" class="num">项目量另议</td><td>≈40%</td></tr>
 </table>
 <p class="small">1080p 成本为内插估算，签约前以火山引擎实际账单校准。全部档位同时服务于消化 Seedance 年 300 万保底（月 25 万产能线）。</p>
 </div>
 
 <div class="ok reveal">
-<b>两段式出片是本方案的核心机制与毛利来源：720p 海选（3 候选/镜）→ 导演画布上选定 → 4K 终稿单掷。</b><br>
-以 7 分钟 78 镜剧集为例：海选 78×3×5s×¥1 ≈ ¥1,170 + 4K 终稿 420s×1.3 掷×¥5 ≈ ¥2,730，合计成本 <b>≈¥3,900/集</b>（对比全 4K 直掷 2.5 次 ≈¥5,250，省 26%）；平价路线（720p 终稿+本地超分）可压到 <b>≈¥1,700/集</b>。客户按对外价付费时，两段式让同一预算多出 40–60% 的可用镜头量——这就是"一键通画布工作流"相对裸 API 的溢价正当性。
+<b>两段式出片：720p 海选（3 候选/镜）→ 导演画布选定 → 4K 终稿单掷。</b><br>
+7 分钟 78 镜剧集：海选 78×3×5s×¥1 ≈ ¥1,170 + 4K 终稿 420s×1.3 掷×¥5 ≈ ¥2,730，合计成本 <b>≈¥3,900/集</b>（全 4K 直掷 ≈¥5,250，省 26%）；平价路线（720p 终稿+本地超分）压到 <b>≈¥1,700/集</b>。同一预算多出 40–60% 可用镜头量——这就是画布工作流相对裸 API 的溢价正当性。
 </div>
+</section>
 
-<h2 id="s2">贰 · 计价四件套（所有客户统一结构）</h2>
+<!-- ===== 贰 计价四件套 ===== -->
+<section class="sec" id="s2">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">所有客户统一结构</span>
+  <h2>计价四件套</h2>
+  <p>接入费 + 席位 + 用量池 + 专属服务，每张报价单只有这四行。</p>
+</div>
 
 <div class="card reveal">
 <table>
 <tr><th>计价项</th><th>内容</th><th class="num">区间</th></tr>
 <tr><td><b>接入费</b>（一次性）</td><td>网关 Key + 工作空间 + 画布工作流部署与定制 + 资产库初始化</td><td class="num">3–15 万</td></tr>
 <tr><td><b>席位月费</b></td><td>AI 助手 + 画布创作合成剪辑（创作席/审片席/管理席三型）</td><td class="num">¥50–3,000/席/月</td></tr>
-<tr><td><b>用量池</b>（月承诺阶梯）</td><td>①国产模型池（多含在席位内）②国际模型池 GPT（2–3× 成本计档）③视频生成池（见壹）④GPU 工时</td><td class="num">按池</td></tr>
+<tr><td><b>用量池</b>（月承诺阶梯）</td><td>①国产模型池（多含在席位内）②国际模型池 GPT（2–3× 成本计档）③视频生成池 ④GPU 工时</td><td class="num">按池</td></tr>
 <tr><td><b>专属服务</b></td><td>驻场 / 定制工作流 / LoRA 训练（0.5–2 万/个）/ 私有化部署</td><td class="num">项目制</td></tr>
 </table>
 
@@ -161,14 +229,14 @@ tr:hover td{background:#1a1a24}
 <tr><th>模型</th><th class="num">成本 输入/输出</th><th>对外形态</th><th>说明</th></tr>
 <tr><td><b>GPT-5.6 Sol</b>（Azure 国际版）</td><td class="num">¥36 / ¥216</td><td>国际池加油包：<b>¥1,000 ≈ 500 万 token</b>（混合口径，约 2.5× 成本）</td><td>剧本/分镜/QC 视觉主力；结构落地前标"预留开通"</td></tr>
 <tr><td>GPT-5.6 Terra（轻量）</td><td class="num">¥18 / ¥108</td><td>并入国际池加油包，网关自动降级用</td><td>晚间/批处理自动切换省一半</td></tr>
-<tr><td><b>Claude Opus 4.8 / Sonnet 5</b></td><td class="num">¥36/¥180 · ¥22/¥108</td><td><span class="tag t-red">不对外 · 不进合同 · 不定价</span></td><td>仅 A 层内部生产工具，成本走内部年度预算池，与客户池完全隔离</td></tr>
+<tr><td><b>Claude Opus 4.8 / Sonnet 5</b></td><td class="num">¥36/¥180 · ¥22/¥108</td><td><span class="tag red">不对外 · 不进合同 · 不定价</span></td><td>仅 A 层内部生产工具，成本走内部年度预算池，与客户池完全隔离</td></tr>
 <tr><td><b>GLM-5.2</b>（估）</td><td class="num">≈¥4 / ¥14</td><td>国产池：<b>包进席位费畅用</b>（软限额）</td><td>国产旗舰主力，签约前按官网校准</td></tr>
 <tr><td><b>DeepSeek V4</b>（估）</td><td class="num">≈¥1.5 / ¥6</td><td>国产池：包进席位费畅用（软限额）</td><td>成本最低云端档，夜间批处理优先</td></tr>
 <tr><td>Gemini（Vertex）</td><td class="num">资格审核中</td><td>预留</td><td>审核通过后并入国际池</td></tr>
 <tr><td><b>本地 vLLM</b>（Qwen3.6-35B 等，H100）</td><td class="num">全摊 ≈¥0.5–1 · 边际≈电费</td><td>零 API 成本：表单代理 / 敏感数据兜底 / 夜间批处理</td><td>1×H100 支撑数百并发轻请求，席位费高毛利的底层</td></tr>
 </table>
 
-<h3>原则外情形：Claude API 接入预测成本 <span class="tag t-red">前提未满足前不生效</span></h3>
+<h3>原则外情形：Claude API 接入预测成本 <span class="tag red">前提未满足前不生效</span></h3>
 <table>
 <tr><th>项</th><th class="num">预测</th><th>说明</th></tr>
 <tr><td><b>生效前提</b>（缺一不可）</td><td class="num">—</td><td>引入<b>真实独立外资合作方</b>（非金泰控股结构）+ 取得 <b>Anthropic 官方书面确认</b></td></tr>
@@ -181,7 +249,7 @@ tr:hover td{background:#1a1a24}
 </table>
 
 <div class="ok" style="margin-top:14px">
-<b>席位成本解剖（以短剧创作席 ¥2,000/月为例）：</b>国产池实际消耗（GLM-5.2+DeepSeek 畅用）≈¥80–150 + 国际池档位（GPT）≈¥200–400 + 平台/网关/存储摊销 ≈¥200 + 支持服务 ≈¥100 → <b>单席成本 ≈¥600–850，毛利 57–70%</b>。<b>席位费的毛利本质是"本地算力 + 国产低价模型"扛走了绝大多数请求，闭源贵模型只在刀刃上用</b>。
+<b>席位成本解剖（以短剧创作席 ¥2,000/月为例）：</b>国产池实际消耗 ≈¥80–150 + 国际池档位（GPT）≈¥200–400 + 平台/网关/存储摊销 ≈¥200 + 支持服务 ≈¥100 → <b>单席成本 ≈¥600–850，毛利 57–70%</b>。<b>席位费的毛利本质是"本地算力 + 国产低价模型"扛走了绝大多数请求，闭源贵模型只在刀刃上用</b>。
 </div>
 </div>
 
@@ -224,8 +292,16 @@ tr:hover td{background:#1a1a24}
 </table>
 <p class="small">权属与安全：默认全部进<b>客户私有层</b>（只托管、不训练）；客户可选择将部分资产授权进<b>共享层</b>（可用于垂类训练），以抵扣用量池费用 5–10%；平台层资产归金泰。机房侧等保三级 + 加密分域 + 全量审计日志，政企客户可升级专属域/私有化（私有化不托管、按 license 计）。</p>
 </div>
+</section>
 
-<h2 id="calc">试算 · 短剧团队月费</h2>
+<!-- ===== 试算器 ===== -->
+<section class="sec" id="calc">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">交互试算</span>
+  <h2>短剧团队月费试算</h2>
+  <p>拖动滑杆，按承诺档自动取价，实时估算你的月费与年框。</p>
+</div>
 <div class="calc reveal">
 <div class="row"><label>创作席数量</label><input type="range" id="seats" min="5" max="30" value="15"><div class="val"><span id="seatsV">15</span> 席</div></div>
 <div class="row"><label>月成片产量（4K 终稿）</label><input type="range" id="mins" min="10" max="120" value="60"><div class="val"><span id="minsV">60</span> 分钟</div></div>
@@ -238,13 +314,20 @@ tr:hover td{background:#1a1a24}
 </div>
 <p class="small" style="margin-top:14px">口径：席位含国产模型畅用与 GPT 用量档；视频池按每分钟 60 秒、海选按 5s/条折算；未含接入费（3–8 万一次性）、LoRA 定制与超额托管。仅作预算参考，正式报价以合同为准。</p>
 </div>
+</section>
 
-<h2 id="s3">叁 · 五类客户报价卡（按主推顺序）</h2>
-<p class="small reveal">注：AI 儿童教育基地为金泰<b>自有项目</b>，不对外开放，不在本方案报价范围；其内部成本核算沿用大模型池/视频池成本锚点（全国产栈 + 本地 vLLM + 720p 档）。</p>
+<!-- ===== 叁 客户报价卡 ===== -->
+<section class="sec" id="s3">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">按主推顺序</span>
+  <h2>五类客户报价卡</h2>
+  <p>AI 儿童教育基地为金泰自有项目，不对外开放，不在本方案报价范围。</p>
+</div>
 
 <div class="grid g2">
-<div class="price-card reveal">
-<div class="name">① AI 短剧团队 <span class="tag t-red">拉专线</span><span class="tag t-gold">重视频</span></div>
+<div class="price-card glow-teal reveal">
+<div class="name">AI 短剧团队 <span class="tag red">拉专线</span><span class="tag gold">重视频</span></div>
 <div class="range">8–20 万<small>/月（15 人团队）</small></div>
 <table>
 <tr><td>接入费</td><td class="num">3–8 万（含定妆卡/LoRA 资产库）</td></tr>
@@ -253,10 +336,11 @@ tr:hover td{background:#1a1a24}
 <tr><td>LoRA 定制</td><td class="num">0.5–2 万/个</td></tr>
 </table>
 <p class="small">另备<b>整线承包</b>模式：¥800–2,000/成片分钟（含生成+工作流+审片 QC，不含编剧导演）——720p 海选把承包毛利抬到 45–60%，是消化 Seedance 保底最快的形态。</p>
+<div class="no">01</div>
 </div>
 
-<div class="price-card reveal">
-<div class="name">② 专业项目专项服务 <span class="tag t-gold">主推</span><span class="tag t-blue">项目制</span></div>
+<div class="price-card glow-purple reveal">
+<div class="name">专业项目专项服务 <span class="tag gold">主推</span><span class="tag blue">项目制</span></div>
 <div class="range">20–120 万<small>/项目</small></div>
 <table>
 <tr><td>专项工作流打造</td><td class="num">15–60 万/项目（诊断 → POC → 定制 → 交付）</td></tr>
@@ -264,11 +348,12 @@ tr:hover td{background:#1a1a24}
 <tr><td>专业团队对接</td><td class="num">制作人一对一；驻场 3–5 万/人/月</td></tr>
 <tr><td>资产定制</td><td class="num">LoRA/风格库 0.5–2 万/个，归属按三层权属条款</td></tr>
 </table>
-<p class="small">适用：纪录片正片、动画正片、剧集正片、老片修复上色、栏目包装升级等<b>有明确交付物的专业影视项目</b>。与④政企型的区别：本型开放平台、工作流与专业制作机构共建；成片交付型可按分钟计价（纪录片空镜/情景再现 ¥1,500–3,000/分钟，修复上色按分钟量议价）。</p>
+<p class="small">适用：纪录片正片、动画正片、剧集正片、老片修复上色、栏目包装升级等<b>有明确交付物的专业影视项目</b>。与政企型的区别：本型开放平台、工作流与专业制作机构共建；成片交付型可按分钟计价（纪录片空镜/情景再现 ¥1,500–3,000/分钟，修复上色按分钟量议价）。</p>
+<div class="no">02</div>
 </div>
 
-<div class="price-card reveal">
-<div class="name">③ 影视/后期工作室 <span class="tag t-gold">云上制片厂</span></div>
+<div class="price-card glow-orange reveal">
+<div class="name">影视/后期工作室 <span class="tag gold">云上制片厂</span></div>
 <div class="range">1–10 万<small>/月，现结</small></div>
 <table>
 <tr><td>渲染农场</td><td class="num">¥0.3–1.5/帧</td></tr>
@@ -277,10 +362,11 @@ tr:hover td{background:#1a1a24}
 <tr><td>增强服务</td><td class="num">超分/修复/插帧 ¥2.4–3/秒</td></tr>
 </table>
 <p class="small">现金流最好的一型：按帧现结、无回款周期。</p>
+<div class="no">03</div>
 </div>
 
-<div class="price-card reveal">
-<div class="name">④ 政企/央视型 <span class="tag t-blue">结果交付制</span><span class="tag t-gold">含定制栏目</span></div>
+<div class="price-card glow-pink reveal">
+<div class="name">政企/央视型 <span class="tag blue">结果交付制</span><span class="tag gold">含定制栏目</span></div>
 <div class="range">10–350 万<small>/项目 · 栏目年框</small></div>
 <table>
 <tr><td>专属工作流交付</td><td class="num">10–100 万/项目</td></tr>
@@ -289,25 +375,34 @@ tr:hover td{background:#1a1a24}
 <tr><td>栏目常态制作（周播）</td><td class="num">3–8 万/期，或月费 12–30 万；<b>年框 150–350 万</b></td></tr>
 <tr><td>修复上色</td><td class="num">按分钟计费，量价另议（可做成常设修复栏目按月保底）</td></tr>
 </table>
-<p class="small">不开放平台，全国产栈交付，数据不落地托管条款前置；三层权属合同先行。栏目常态制作覆盖：AI 空镜/情景再现、历史影像修复、数据可视化、包装体系应用；播出内容执行台内终审双轨把关，金泰交付素材与成片、署名版权按台方规则。</p>
+<p class="small">不开放平台，全国产栈交付，数据不落地托管条款前置；三层权属合同先行。栏目常态制作覆盖：AI 空镜/情景再现、历史影像修复、数据可视化、包装体系应用；播出内容执行台内终审双轨把关，署名版权按台方规则。</p>
+<div class="no">04</div>
 </div>
 
-<div class="price-card reveal">
-<div class="name">⑤ 高校共创型 <span class="tag t-gold">河传样板价</span></div>
+<div class="price-card glow-teal reveal">
+<div class="name">高校共创型 <span class="tag gold">河传样板价</span></div>
 <div class="range">成本价<small> / 资源置换</small></div>
 <table>
 <tr><td>学生席</td><td class="num">¥30–80/月</td></tr>
 <tr><td>置换标的</td><td class="num">人才池 / 教学内容 / 基地叙事</td></tr>
 </table>
 <p class="small">定价目的是"全国最大高校 AI 应用基地"样板与人才池，不是利润。</p>
+<div class="no">05</div>
 </div>
 </div>
+</section>
 
-<h2 id="s4">肆 · 通用规则与熔断</h2>
+<!-- ===== 肆 通用规则 ===== -->
+<section class="sec" id="s4">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">规则与熔断</span>
+  <h2>通用规则</h2>
+</div>
 <div class="card reveal">
 <table>
 <tr><th>规则</th><th>内容</th></tr>
-<tr><td>阶梯承诺</td><td>月承诺消费越高单价越低（5/10/20 万三档，见壹）</td></tr>
+<tr><td>阶梯承诺</td><td>月承诺消费越高单价越低（5/10/20 万三档）</td></tr>
 <tr><td>年付优惠</td><td>年框一次付清 9 折</td></tr>
 <tr><td>超额处理</td><td>池用尽后按标准价 1.1× 续购，或自动降级国产池/720p 档继续工作</td></tr>
 <tr><td>熔断告警</td><td>继承内部预算体系：月消耗 80% 预警 / 90% 限高价池 / 100% 只留低价池</td></tr>
@@ -316,11 +411,19 @@ tr:hover td{background:#1a1a24}
 <tr><td>报价单纪律</td><td>每张报价单固定三行：席位 + 用量池 + 服务；<b>绝不出现"Token 单价""带宽"字样</b></td></tr>
 </table>
 </div>
+</section>
 
-<h2 id="s5">伍 · 打包价（一口价年框套餐）</h2>
-<p class="reveal"><span class="tag t-gold">给决策者一个数</span><span class="tag t-gold">较明细价让利 10–15%</span><span class="tag t-gold">年框锁定 · 分季度付</span></p>
+<!-- ===== 伍 打包价 ===== -->
+<section class="sec" id="s5">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">一口价年框 · 让利 10–15% · 分季度付</span>
+  <h2>打包价</h2>
+  <p>给决策者一个数。</p>
+</div>
 
-<div class="card reveal">
+<div class="card reveal" style="position:relative;overflow:visible">
+<div class="prism p3" style="right:-40px;top:-70px"></div>
 <table>
 <tr><th>套餐</th><th>适用</th><th>包含</th><th class="num">明细价/年</th><th class="num">打包价/年</th><th class="num">折合月付</th></tr>
 <tr>
@@ -352,39 +455,13 @@ tr:hover td{background:#1a1a24}
 <div class="warn reveal">
 <b>假设声明：</b>Seedance 720p ¥1/秒、4K ¥5/秒为预计成本，1080p 为内插估算，均以火山引擎实际合约校准后再定稿对外价；GLM-5.2 / DeepSeek V4 单价为估算，签约前按智谱/深度求索官网现价校准；GPT 按 2026-07 Azure 国际版牌价（Sol $5/$30），国际池以香港实体+Azure 结构落地为开通前提；本地 vLLM 全摊成本随利用率浮动（跑得越满越便宜）；所有区间按石家庄成本口径，北京客户驻场上浮 20–30%。
 </div>
+</section>
 
-<div class="foot">
-金泰AI · 一键通服务定价方案（预测稿）· 2026-07
-</div>
+<div class="foot">金泰AI · 一键通服务定价方案（预测稿）· 2026-07</div>
 
 </div>
 
 <script>
-// ===== 胶片颗粒背景 =====
-(() => {
-  const c = document.getElementById('grain'), x = c.getContext('2d');
-  let w, h; const dots = [];
-  function size(){ w = c.width = innerWidth; h = c.height = innerHeight; }
-  size(); addEventListener('resize', size);
-  for (let i = 0; i < 90; i++) dots.push({x: Math.random(), y: Math.random(), r: Math.random()*1.6+.3, s: Math.random()*.0006+.0002, o: Math.random()*.5+.1});
-  (function loop(){
-    x.clearRect(0,0,w,h);
-    // 微弱噪点
-    for (let i = 0; i < 60; i++) { x.fillStyle = 'rgba(255,255,255,' + (Math.random()*.03) + ')'; x.fillRect(Math.random()*w, Math.random()*h, 1, 1); }
-    // 金色浮尘
-    for (const d of dots) {
-      d.y -= d.s; if (d.y < -0.02) { d.y = 1.02; d.x = Math.random(); }
-      x.beginPath(); x.arc(d.x*w, d.y*h, d.r, 0, 7);
-      x.fillStyle = 'rgba(212,169,78,' + (d.o*.35) + ')'; x.fill();
-    }
-    requestAnimationFrame(loop);
-  })();
-})();
-
-// ===== 拉幕开场 =====
-setTimeout(() => document.body.classList.add('open'), 900);
-setTimeout(() => { for (const id of ['curtainL','curtainR','curtainTitle']) document.getElementById(id).style.display = 'none'; }, 2800);
-
 // ===== 滚动显现 + 数字滚动（scroll 实现，兼容所有环境）=====
 function startCounters(scope) {
   scope.querySelectorAll('.cnt').forEach(el => {
@@ -406,15 +483,16 @@ function checkReveal() {
 }
 addEventListener('scroll', checkReveal, {passive: true});
 addEventListener('resize', checkReveal);
-setTimeout(checkReveal, 1000);
+setTimeout(checkReveal, 300);
+setTimeout(checkReveal, 1500);
 setTimeout(checkReveal, 3000);
 
 // ===== 导航高亮 =====
-const secs = [...document.querySelectorAll('h2[id]')];
-const links = [...document.querySelectorAll('nav a')];
+const secs = [...document.querySelectorAll('section[id], .sec[id]')];
+const links = [...document.querySelectorAll('nav .links a')];
 addEventListener('scroll', () => {
-  let cur = secs.findLast ? secs.findLast(s => s.getBoundingClientRect().top < 120) : null;
-  if (!cur) for (const s of secs) if (s.getBoundingClientRect().top < 120) cur = s;
+  let cur = null;
+  for (const s of secs) if (s.getBoundingClientRect().top < 140) cur = s;
   links.forEach(a => a.classList.toggle('on', cur && a.getAttribute('href') === '#' + cur.id));
 }, {passive: true});
 
@@ -422,7 +500,7 @@ addEventListener('scroll', () => {
 (() => {
   const seats = document.getElementById('seats'), mins = document.getElementById('mins'), takes = document.getElementById('takes');
   const fmt = n => n.toLocaleString('zh-CN', {maximumFractionDigits: 0});
-  function tier(videoSpend) { // 按月视频消费取承诺档
+  function tier(videoSpend) {
     if (videoSpend >= 200000) return {p720: 1.5, p4k: 7.0};
     if (videoSpend >= 100000) return {p720: 1.6, p4k: 8.0};
     if (videoSpend >= 50000)  return {p720: 1.8, p4k: 8.5};
@@ -434,7 +512,6 @@ addEventListener('scroll', () => {
     document.getElementById('minsV').textContent = m;
     document.getElementById('takesV').textContent = k;
     const seatFee = s * 2000;
-    // 先按标准价估消费定档，再按档价出数
     let v = m * 60 * (k * 2.0 + 1.3 * 9.0);
     const t = tier(v);
     v = m * 60 * (k * t.p720 + 1.3 * t.p4k);
