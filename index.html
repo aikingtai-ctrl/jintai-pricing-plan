@@ -134,6 +134,21 @@ tr:hover td{background:rgba(255,255,255,.03)}
 .calc .out .n{font-size:40px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
 .calc .out .l{font-size:16px;color:var(--dim)}
 
+/* ===== 优惠卡 ===== */
+.g3{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.promo{position:relative;overflow:hidden;background:linear-gradient(rgba(17,21,34,.55),rgba(13,16,26,.55)) padding-box,linear-gradient(150deg,rgba(255,255,255,.3),rgba(255,255,255,.05) 45%,rgba(255,255,255,.02)) border-box;border:1px solid transparent;border-radius:20px;padding:26px 26px 24px;backdrop-filter:blur(16px);box-shadow:0 16px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.14);transition:transform .3s,box-shadow .3s}
+.promo:hover{transform:translateY(-5px);box-shadow:0 28px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22)}
+.promo::before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;top:-110px;right:-70px;filter:blur(50px);opacity:.45;pointer-events:none}
+.promo.c1::before{background:var(--teal)}.promo.c2::before{background:var(--purple)}
+.promo.c3::before{background:var(--orange)}.promo.c4::before{background:var(--pink)}
+.promo .pt{font-size:21px;color:#fff;font-weight:700}
+.promo .pv{font-size:32px;font-weight:800;margin:10px 0 12px;letter-spacing:.5px}
+.promo.c1 .pv{color:#7cf0d8}.promo.c2 .pv{color:#c3aeff}.promo.c3 .pv{color:#ffc79a}.promo.c4 .pv{color:#ffabc2}
+.promo ul{margin:0;padding-left:18px;font-size:16px;color:var(--dim);line-height:1.85}
+.promo ul li::marker{color:rgba(255,255,255,.35)}
+.promo .who{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:15px;color:var(--dim)}
+.promo .who b{color:#dfe3ec;font-weight:600}
+
 /* ===== 用量画像条 ===== */
 .usage{margin:16px 0 6px}
 .usage .bar{display:flex;height:11px;border-radius:6px;overflow:hidden;background:rgba(255,255,255,.06);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
@@ -159,7 +174,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <nav>
   <div class="logo"><b>金泰AI<em>.</em></b></div>
   <div class="links">
-    <a href="#profiles">分实体计费</a><a href="#points">K token 计价</a><a href="#budget">预算示例</a><a href="#s1">视频池</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s5">打包价</a>
+    <a href="#profiles">分实体计费</a><a href="#points">K token 计价</a><a href="#offers">优惠方案</a><a href="#budget">预算示例</a><a href="#s1">视频池</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s5">打包价</a>
   </div>
   <a class="pill" href="#s5">查看打包价</a>
 </nav>
@@ -323,7 +338,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <tr><td><b>预付包 · 50 万 K</b></td><td class="num"><b>¥2.0/K</b></td><td class="num"><b>100 万</b></td><td>成熟团队量产（<b>基准档</b>）</td></tr>
 <tr><td>预付包 · 120 万 K</td><td class="num">¥1.8/K</td><td class="num">216 万</td><td>多团队/集团采购</td></tr>
 <tr><td>预付包 · 300 万 K 以上</td><td class="num">面议</td><td class="num">—</td><td>批发型合作</td></tr>
-<tr><td><b>基础设施专档</b></td><td class="num">¥1.4/K 起</td><td class="num">按配置</td><td>仅含 GPU 卡时/存储/机柜/专属整机，不含生成与国际模型服务</td></tr>
+<tr><td><b>基础设施专档</b></td><td class="num">¥1.4/K 起</td><td class="num">按配置</td><td>限 GPU 卡时 · 渲染 · 超分增强 · 存储 · 机柜 · 专属整机；<b>不含视频生成与国际模型池</b></td></tr>
 </table>
 <p class="small">按量计费无门槛、无承诺，单价最高；预付包越大单价越低，年度有效、季度滚存。包用尽后自动转按量计费不断工，或按同档续购。升档不罚、降档不退；共创与自有合作另按约定档执行。</p>
 </div>
@@ -333,10 +348,10 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <table>
 <tr><th>服务</th><th class="num">消耗</th><th class="num">基准档等效价</th></tr>
 <tr><td>视频生成 · 720p（海选/预演）</td><td class="num">1K/秒</td><td class="num">¥2.0/秒</td></tr>
-<tr><td>视频生成 · 1080p</td><td class="num">1.8K/秒</td><td class="num">¥3.6/秒</td></tr>
+<tr><td>视频生成 · 1080p</td><td class="num">2K/秒</td><td class="num">¥4.0/秒</td></tr>
 <tr><td>视频生成 · 4K（正片终稿）</td><td class="num">4.5K/秒</td><td class="num">¥9.0/秒</td></tr>
 <tr><td>超分增强 720p→4K</td><td class="num">1.5K/秒</td><td class="num">¥3.0/秒</td></tr>
-<tr><td>动作/表情迁移</td><td class="num">8–15K/条(5s)</td><td class="num">¥16–30/条</td></tr>
+<tr><td>动作/表情迁移（标准 5s）</td><td class="num">12K/条</td><td class="num">¥24/条</td></tr>
 <tr><td>H100 卡时（训练/微调/批量增强）</td><td class="num">35K/卡时</td><td class="num">¥70/卡时</td></tr>
 <tr><td>5090 卡时（渲染/剪辑）</td><td class="num">12K/卡时</td><td class="num">¥24/卡时</td></tr>
 <tr><td>渲染农场按帧</td><td class="num">0.15–0.75K/帧</td><td class="num">¥0.3–1.5/帧</td></tr>
@@ -365,12 +380,134 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <p class="small">
 <b>为什么输入与输出分开计价：</b>输出（生成）的算力开销是输入（读取）的 3–4 倍，各家模型厂商的定价规则均按此区分。若合并成一个均价，做长文本创作的客户（输出重）就会被做资料检索的客户（输入重）搭便车，两边都不公平。<br>
 <b>为什么按模型分档：</b>四个国产模型之间的实际单价相差 2–5 倍，打包成统一价会让所有人都去调用最贵的那个。分档之后，<b>网关默认按任务路由到性价比最优的模型</b>——批量处理走 DeepSeek V4、长上下文与全稿走 Kimi K3、视觉理解走 Qwen 3.8、综合任务走 GLM-5.2，客户也可在工作流中指定模型。<br>
-<b>席位包含额度：</b>创作席内含国产池与本地池的常规用量（软限额，覆盖日常剧本、分镜、检索），超出部分与国际池调用按上表据实计费。
+<b>席位包含额度：</b>每张创作席每月含 <b>国产池 50M token + 本地池不限量</b>（覆盖日常剧本、分镜、检索、审片的常规强度），超出部分与国际池调用按上表据实计费。团队整体额度可跨席共享，不按单人卡死。
 </p>
 </div>
 
 <div class="ok reveal">
 <b>为什么统一成一种单位：</b>创作节奏是波动的——这个月重生成、下个月重渲染、项目收尾时重存储。分项预算会让每一项都留余量，合计浪费 20–30%；<b>一个 K token 池按实际节奏自由流动，预算利用率接近 100%</b>，也让财务只需盯一个数字。用不完的视频额度可以直接拿去跑渲染、做训练或买存储。
+</div>
+</section>
+
+<!-- ===== 优惠方案 ===== -->
+<section class="sec" id="offers">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">九套优惠 · 可叠加</span>
+  <h2>怎么买更划算</h2>
+  <p>先试后买、越早越省、错峰更便宜。优惠可组合使用，最终单价以合同为准。</p>
+</div>
+
+<div class="grid g3">
+
+<div class="promo c1 reveal">
+<div class="pt">① 零门槛体验</div>
+<div class="pv">免费 3,000K</div>
+<ul>
+<li>新客注册即赠，7 天有效</li>
+<li>可跑约 30 分钟 720p 视频或数百万字文本</li>
+<li>无需付费、无需承诺，不满意直接走</li>
+<li>含专人陪跑一次开工会</li>
+</ul>
+<div class="who"><b>适合：</b>还没确定 AI 能否融入自己流程的团队</div>
+</div>
+
+<div class="promo c2 reveal">
+<div class="pt">② 首签加赠</div>
+<div class="pv">额度 +20%</div>
+<ul>
+<li>首次购买任意预付包，额外加赠 20% 额度</li>
+<li>加赠部分用于 GPU 算力、渲染、超分增强与存储</li>
+<li>例：购 20 万 K 得 24 万 K</li>
+<li>与预付包档位单价叠加生效</li>
+</ul>
+<div class="who"><b>适合：</b>已决定投入、希望第一年多留余量的团队</div>
+</div>
+
+<div class="promo c3 reveal">
+<div class="pt">③ 夜间错峰</div>
+<div class="pv">批处理 8 折</div>
+<ul>
+<li>22:00–08:00 提交的批处理任务按 8 折计消耗</li>
+<li>适用渲染、训练、超分增强与本地模型池</li>
+<li>由平台自动排程，次日清晨取件</li>
+<li>可与所有其他优惠叠加</li>
+</ul>
+<div class="who"><b>适合：</b>渲染与批量处理为主、对时效不敏感的工作室</div>
+</div>
+
+<div class="promo c4 reveal">
+<div class="pt">④ 长约优惠</div>
+<div class="pv">再降 5–8%</div>
+<ul>
+<li>签两年框架：单价再降 5%</li>
+<li>签三年框架：单价再降 8%</li>
+<li>年度额度可跨年结转一次</li>
+<li>期内消耗表调价不影响已购额度</li>
+</ul>
+<div class="who"><b>适合：</b>已有稳定产能规划的成熟团队与机构</div>
+</div>
+
+<div class="promo c1 reveal">
+<div class="pt">⑤ 推荐返利</div>
+<div class="pv">双方各得 5%</div>
+<ul>
+<li>推荐新客成功签约，推荐方与新客各得签约额 5% 的额度</li>
+<li>推荐不设上限，可累计</li>
+<li>返利额度当年有效</li>
+</ul>
+<div class="who"><b>适合：</b>影视行业内有同行人脉的制作方与工作室</div>
+</div>
+
+<div class="promo c2 reveal">
+<div class="pt">⑥ 迁移补贴</div>
+<div class="pv">赠 10% + 免费搬家</div>
+<ul>
+<li>凭其他平台账单迁入，赠等值 10% 额度（上限 10 万 K）</li>
+<li>免费素材迁移与工作流复刻，由平台工程师执行</li>
+<li>迁移期间双平台并行，不影响在制项目</li>
+</ul>
+<div class="who"><b>适合：</b>已在其他平台生产、希望降低切换成本的团队</div>
+</div>
+
+<div class="promo c3 reveal">
+<div class="pt">⑦ 标杆共建</div>
+<div class="pv">8 折 · 限 5 家</div>
+<ul>
+<li>首批标杆客户享全服务 8 折</li>
+<li>联合案例署名与作品共同发布</li>
+<li>优先参与新功能内测与工作流共建</li>
+<li>名额有限，签完即止</li>
+</ul>
+<div class="who"><b>适合：</b>愿意共同打磨工作流、接受案例公开的头部团队</div>
+</div>
+
+<div class="promo c4 reveal">
+<div class="pt">⑧ 淡季充值</div>
+<div class="pv">额外赠 15%</div>
+<ul>
+<li>行业淡季（1–2 月、7–8 月）充值额外加赠 15%</li>
+<li>赠送额度全年有效，不限淡旺季使用</li>
+<li>可与充值制的常规赠送叠加</li>
+</ul>
+<div class="who"><b>适合：</b>接单波动明显的后期与渲染型工作室</div>
+</div>
+
+<div class="promo c1 reveal">
+<div class="pt">⑨ 教学公益档</div>
+<div class="pv">成本价供应</div>
+<ul>
+<li>高校教学、公益与非营利项目按成本档供应</li>
+<li>限本地模型池与 720p 生成，按学期结算</li>
+<li>可用教学内容、实习人才池等方式置换</li>
+</ul>
+<div class="who"><b>适合：</b>院校、教育机构与公益内容制作方</div>
+</div>
+
+</div>
+
+<div class="ok reveal">
+<b>叠加规则：</b>① 预付包档位单价是基础，首签加赠、夜间错峰、长约优惠、推荐返利可在其上叠加；② 标杆共建价与迁移补贴二选一，不同时享受；③ 教学公益档为独立档位，不再叠加其他优惠；④ 所有优惠均以额度或折扣形式给予，<b>不改变消耗表口径</b>——用得越明白，省得越明白。
 </div>
 </section>
 
@@ -505,7 +642,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <table>
 <tr><th>档位</th><th class="num">标准价</th><th class="num">承诺 5 万档</th><th class="num">承诺 10 万档</th><th class="num">承诺 20 万档</th></tr>
 <tr><td><b>720p</b>（海选/预演）</td><td class="num">¥2.0/秒</td><td class="num">¥1.8</td><td class="num">¥1.6</td><td class="num">¥1.5</td></tr>
-<tr><td>1080p</td><td class="num">¥3.5/秒</td><td class="num">¥3.2</td><td class="num">¥3.0</td><td class="num">¥2.6</td></tr>
+<tr><td>1080p</td><td class="num">¥4.0/秒</td><td class="num">¥3.8</td><td class="num">¥3.6</td><td class="num">¥3.2</td></tr>
 <tr><td><b>4K</b>（正片终稿）</td><td class="num">¥9.0/秒</td><td class="num">¥8.5</td><td class="num">¥8.0</td><td class="num">¥7.0</td></tr>
 <tr><td>720p→4K 超分增强</td><td class="num">¥3.0/秒</td><td class="num">¥2.8</td><td class="num">¥2.6</td><td class="num">¥2.4</td></tr>
 <tr><td>动作/表情迁移（实拍融合）</td><td class="num">¥15–30/条(5s)</td><td colspan="3" class="num">项目量另议</td></tr>
