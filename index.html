@@ -674,7 +674,68 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <tr><td><b>专属服务</b></td><td>驻场 / 定制工作流 / LoRA 训练（0.5–2 万/个）/ 私有化部署</td><td class="num">项目制</td></tr>
 </table>
 
-<h3>GPU 工时与渲染</h3>
+<h3>① 接入费怎么算（一次性，按模块组合）</h3>
+<table>
+<tr><th>模块</th><th>内容</th><th class="num">价格</th></tr>
+<tr><td><b>基础接入</b>（必选）</td><td>网关 Key 开通 + 工作空间创建 + 账号与权限体系配置 + 2 天上手培训</td><td class="num">3 万</td></tr>
+<tr><td>画布工作流部署</td><td>标准模板部署（出图 / 出视频 / 剪辑合成 / 审片 QC）+ 1 次定制调整</td><td class="num">+2 万</td></tr>
+<tr><td>工作流深度定制</td><td>按客户既有流程定制开发，含需求调研与联调</td><td class="num">+1.5 万/条</td></tr>
+<tr><td>资产库初始化</td><td>历史素材导入、批量打标、检索索引构建</td><td class="num">≤5TB +1 万<br>5–20TB +2.5 万<br>&gt;20TB +4 万</td></tr>
+<tr><td>专线接入配合</td><td>机房侧配合与联调（专线由客户以自身名义申请）</td><td class="num">+1–3 万</td></tr>
+</table>
+<p class="small">组合示例：最小接入 <b>3 万</b>；典型短剧团队（基础 + 画布 + 5TB 资产库）<b>6 万</b>；央视部门（基础 + 4 条定制 + 20TB 资产库 + 专线）<b>15 万</b>。同一客户新增工作流按 1.5 万/条续费，不重复收基础接入费。</p>
+
+<h3>② 席位月费怎么算（三型六档）</h3>
+<table>
+<tr><th>席位类型</th><th>权限</th><th class="num">含量</th><th class="num">月费</th><th class="num">K token</th></tr>
+<tr><td><b>审片席</b></td><td>看片、批注、审批，无生成权限</td><td class="num">—</td><td class="num hi">免费不限量</td><td class="num">0K</td></tr>
+<tr><td>教学/实习席</td><td>模板锁定的受限创作</td><td class="num">本地池不限 + 720p 300K/月</td><td class="num">¥50–150</td><td class="num">25–75K</td></tr>
+<tr><td><b>创作席 · 标准</b></td><td>全功能创作、画布、剪辑合成</td><td class="num">国产池 50M token + 本地池不限</td><td class="num">¥2,000</td><td class="num">1,000K</td></tr>
+<tr><td>创作席 · 重度</td><td>全功能 + 国际模型池调用权限</td><td class="num">国产池 100M + 国际池 20M token</td><td class="num">¥3,000</td><td class="num">1,500K</td></tr>
+<tr><td>管理席</td><td>全功能 + 额度管理、用量报表、审计日志</td><td class="num">同标准创作席</td><td class="num">¥2,500</td><td class="num">1,250K</td></tr>
+<tr><td>云剪辑席</td><td>云工作站（DaVinci / Premiere），素材不出机房</td><td class="num">含 2TB 热存储</td><td class="num">¥1,000</td><td class="num">500K</td></tr>
+</table>
+<p class="small">计费规则：按自然月计；<b>月中新增按天折算</b>（月费 ÷ 30 × 剩余天数），<b>月中减席按天退回额度池</b>；席位类型可随时升降级，按天分段计费；<b>团队含量额度跨席共享</b>——某人用得多、某人用得少不必互相迁就。</p>
+
+<h3>③ 用量池怎么算（四池通用规则 + 各池算法）</h3>
+<table>
+<tr><th>通用规则</th><th>说明</th></tr>
+<tr><td>计量精度</td><td>K token 计至 0.1K（即 100 token / 0.1 秒级），四舍五入</td></tr>
+<tr><td><b>失败不计费</b></td><td>系统原因导致的失败（超时、崩溃、黑帧、噪点）自动重跑且<b>全额不计费</b>，由平台 QC 自动检出；用户主动中止按已完成比例计</td></tr>
+<tr><td>重复提交去重</td><td>相同参数 5 分钟内重复提交只计一次</td></tr>
+<tr><td>系统开销不计</td><td>工作流内置提示词、系统指令、调度开销<b>不计入客户用量</b></td></tr>
+<tr><td>扣减时点</td><td>任务完成时扣减；超过 1 小时的长任务按小时预扣、结束时多退少补</td></tr>
+</table>
+<table>
+<tr><th>池</th><th>算法</th></tr>
+<tr><td><b>视频生成池</b></td><td><b>消耗 = 时长(秒) × 档位系数 × 条数</b><br>档位系数：720p 1K · 1080p 2K · 4K 4.5K · 超分增强 1.5K；不足 1 秒按 1 秒计<br>批量提交 ≥10 条享 <b>5% 消耗折扣</b>；QC 判定为废片的自动重跑不计费</td></tr>
+<tr><td><b>模型池</b></td><td><b>消耗 =（输入 token ÷ 100 万 × 输入系数）+（输出 token ÷ 100 万 × 输出系数）</b><br>系数见模型池表；<b>命中缓存的输入按 25% 计</b>（长脚本反复对话时显著省量）<br>流式输出中途停止只计已生成部分</td></tr>
+<tr><td><b>GPU 工时</b></td><td><b>消耗 = 卡数 × 时长(小时) × 卡型系数</b>（H100 35K · 5090 12K）<br>计时精度到分钟，<b>排队等待不计费</b>，仅计实际占用<br>渲染按帧：<b>帧消耗 = 分辨率系数 × 复杂度系数</b>；分辨率 1080p 0.15K · 2K 0.3K · 4K 0.5K · 8K 0.75K；复杂度标准 1.0、含体积光/焦散等重效果 1.3<br>22:00–08:00 提交的批处理 <b>×0.8</b></td></tr>
+<tr><td><b>存储</b></td><td><b>消耗 = 容量(TB) × 层级系数 × 计费天数 ÷ 30</b>（热 100K · 温 40K · 冷 10K 每 TB·月）<br>按每日 0:00 快照计量；套餐内额度先抵扣，超出才计费<br>删除后当日停止计费；<b>跨层迁移不收搬运费</b></td></tr>
+</table>
+
+<h3>④ 专属服务怎么算（项目制，人天为基础）</h3>
+<table>
+<tr><th>角色</th><th class="num">人天单价</th><th class="num">驻场包月（20 天 · 85 折）</th><th>职责</th></tr>
+<tr><td>解决方案架构师</td><td class="num">¥3,500</td><td class="num">≈6 万/月</td><td>需求调研、方案设计、技术选型</td></tr>
+<tr><td>管线工程师 / TD</td><td class="num">¥2,500</td><td class="num">≈4.25 万/月</td><td>工作流开发、系统集成、自动化</td></tr>
+<tr><td>AI 生成工程师</td><td class="num">¥2,000</td><td class="num">≈3.4 万/月</td><td>提示词工程、模型调优、资产训练</td></tr>
+<tr><td>驻场制作人</td><td class="num">¥2,000</td><td class="num">≈3.4 万/月</td><td>现场对接、流程落地、进度协调</td></tr>
+<tr><td>剪辑合成师</td><td class="num">¥1,800</td><td class="num">≈3.06 万/月</td><td>后期制作、成片合成</td></tr>
+</table>
+<table>
+<tr><th>专项服务</th><th class="num">价格</th><th>交付标准</th></tr>
+<tr><td>标准角色 LoRA</td><td class="num">0.5 万/个</td><td>20–30 张素材、单轮训练，含 3 次免费迭代</td></tr>
+<tr><td>精细角色 LoRA</td><td class="num">1.2 万/个</td><td>50+ 张素材、多轮调优 + 导演盲测通过</td></tr>
+<tr><td>风格 LoRA</td><td class="num">2 万/个</td><td>含数据清洗与配比实验，交付风格一致性报告</td></tr>
+<tr><td>额外迭代</td><td class="num">2,000/次</td><td>超出免费次数后按次计</td></tr>
+<tr><td>私有化部署 · 轻量</td><td class="num">15–25 万</td><td>单机部署，国产模型 + 基础工作流</td></tr>
+<tr><td>私有化部署 · 标准</td><td class="num">40–80 万</td><td>多机集群 + 完整工作流 + 培训交接</td></tr>
+<tr><td>私有化年维护</td><td class="num">部署费 × 15%</td><td>版本升级、远程支持、年度巡检</td></tr>
+</table>
+<p class="small">人力型服务<b>不消耗 K token</b>，独立计价；驻场不足整月按人天计，超过 3 个月可谈长期折扣。</p>
+
+<h3>附：GPU 与渲染价目速查</h3>
 <table>
 <tr><th>资源</th><th class="num">价格</th><th class="num">K token 消耗</th><th>用途</th></tr>
 <tr><td>5090 卡时</td><td class="num">¥20–30/卡时</td><td class="num">12K/卡时</td><td>渲染/增强/云剪辑底层</td></tr>
