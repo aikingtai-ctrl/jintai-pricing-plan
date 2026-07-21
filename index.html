@@ -149,7 +149,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <nav>
   <div class="logo"><b>金泰AI<em>.</em></b></div>
   <div class="links">
-    <a href="#points">算力点计价</a><a href="#budget">预算示例</a><a href="#s1">视频池</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s5">打包价</a>
+    <a href="#points">K token 计价</a><a href="#budget">预算示例</a><a href="#s1">视频池</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s5">打包价</a>
   </div>
   <a class="pill" href="#s5">查看打包价</a>
 </nav>
@@ -167,62 +167,63 @@ tr:hover td{background:rgba(255,255,255,.03)}
 </header>
 
 <div class="strip reveal">
-  <div class="c"><div class="k">720P 生成成本</div><div class="v">¥<span class="cnt" data-t="1" data-d="0">0</span><em>/秒</em></div></div>
-  <div class="c"><div class="k">4K 生成成本</div><div class="v">¥<span class="cnt" data-t="5" data-d="0">0</span><em>/秒</em></div></div>
-  <div class="c"><div class="k">超分档毛利</div><div class="v"><span class="cnt" data-t="55" data-d="0">0</span><em>–65%</em></div></div>
-  <div class="c"><div class="k">目标利用率</div><div class="v"><span class="cnt" data-t="95" data-d="0">0</span><em>%</em></div></div>
+  <div class="c"><div class="k">基准档单价</div><div class="v">¥<span class="cnt" data-t="2" data-d="1">0</span><em>/K token</em></div></div>
+  <div class="c"><div class="k">按量计费</div><div class="v">¥<span class="cnt" data-t="2.6" data-d="1">0</span><em>/K · 无承诺</em></div></div>
+  <div class="c"><div class="k">720P 视频消耗</div><div class="v"><span class="cnt" data-t="1" data-d="0">0</span><em>K/秒</em></div></div>
+  <div class="c"><div class="k">4K 视频消耗</div><div class="v"><span class="cnt" data-t="4.5" data-d="1">0</span><em>K/秒</em></div></div>
 </div>
 
-<!-- ===== 算力点计价 ===== -->
+<!-- ===== K token 计价 ===== -->
 <section class="sec" id="points">
 <div class="sec-head reveal">
   <div class="spark">✦</div>
   <span class="leadpill">统一计量单位</span>
-  <h2>金泰算力点</h2>
-  <p>一套点数贯通全部服务——生成、算力、模型、存储、席位。一个账户、一张账单、一个数字管预算。</p>
+  <h2>K token 统一计价</h2>
+  <p>一种单位贯通全部服务——生成、算力、模型、存储、席位。一个账户、一张账单、一个数字管预算。</p>
 </div>
 
 <div class="card reveal">
-<h3>怎么用</h3>
-<p>购买<b>年度点数包</b>→ 使用任意服务自动扣点 → 月度对账单显示各项消耗。不必为每种服务单独签约、单独结算；用量在服务之间自由调配，视频用不完可以拿去跑渲染或存储。</p>
+<h3>什么是 K token</h3>
+<p><b>K token 是金泰平台的统一服务计量单位</b>，用于计量客户在平台上消耗的各项服务（视频生成、GPU 算力、模型调用、存储、席位）。它不是某一家上游模型的 token，也不与任何单一供应商绑定——<b>1K token 即 1 个标准服务单元</b>，各服务按下方消耗表折算。</p>
 <table>
-<tr><th>年度点数包</th><th class="num">档位单价</th><th class="num">对应预算</th><th>适用</th></tr>
-<tr><td>5 万点</td><td class="num">¥2.4/点</td><td class="num">12 万</td><td>试水/单项目</td></tr>
-<tr><td>20 万点</td><td class="num">¥2.2/点</td><td class="num">44 万</td><td>小型团队全年</td></tr>
-<tr><td><b>50 万点</b></td><td class="num"><b>¥2.0/点</b></td><td class="num"><b>100 万</b></td><td>成熟团队量产（基准档）</td></tr>
-<tr><td>120 万点</td><td class="num">¥1.8/点</td><td class="num">216 万</td><td>多团队/集团采购</td></tr>
-<tr><td>300 万点以上</td><td class="num">面议</td><td class="num">—</td><td>批发型合作</td></tr>
-<tr><td><b>基础设施专档</b></td><td class="num">¥1.4/点起</td><td class="num">按配置</td><td>仅含 GPU 卡时/存储/机柜/专属整机，不含生成与国际模型服务</td></tr>
+<tr><th>计费模式</th><th class="num">单价</th><th class="num">承诺</th><th>适用</th></tr>
+<tr><td><b>按量计费</b>（无承诺）</td><td class="num">¥2.6/K</td><td class="num">无</td><td>随用随付、月度结算，随时停用</td></tr>
+<tr><td>预付包 · 5 万 K</td><td class="num">¥2.4/K</td><td class="num">12 万</td><td>试水/单项目</td></tr>
+<tr><td>预付包 · 20 万 K</td><td class="num">¥2.2/K</td><td class="num">44 万</td><td>小型团队全年</td></tr>
+<tr><td><b>预付包 · 50 万 K</b></td><td class="num"><b>¥2.0/K</b></td><td class="num"><b>100 万</b></td><td>成熟团队量产（<b>基准档</b>）</td></tr>
+<tr><td>预付包 · 120 万 K</td><td class="num">¥1.8/K</td><td class="num">216 万</td><td>多团队/集团采购</td></tr>
+<tr><td>预付包 · 300 万 K 以上</td><td class="num">面议</td><td class="num">—</td><td>批发型合作</td></tr>
+<tr><td><b>基础设施专档</b></td><td class="num">¥1.4/K 起</td><td class="num">按配置</td><td>仅含 GPU 卡时/存储/机柜/专属整机，不含生成与国际模型服务</td></tr>
 </table>
-<p class="small">点数包年度有效、季度滚存；用尽后按同档单价续购，或自动降级至低折点服务（720p、国产模型池、本地模型池）不断工。共创与自有合作另按约定档执行。</p>
+<p class="small">按量计费无门槛、无承诺，单价最高；预付包越大单价越低，年度有效、季度滚存。包用尽后自动转按量计费不断工，或按同档续购。升档不罚、降档不退；共创与自有合作另按约定档执行。</p>
 </div>
 
 <div class="card reveal">
-<h3>折点表：各服务消耗速率</h3>
+<h3>消耗表：各服务折合多少 K token</h3>
 <table>
-<tr><th>服务</th><th class="num">折点</th><th class="num">基准档等效价</th></tr>
-<tr><td>视频生成 · 720p（海选/预演）</td><td class="num">1 点/秒</td><td class="num">¥2.0/秒</td></tr>
-<tr><td>视频生成 · 1080p</td><td class="num">1.8 点/秒</td><td class="num">¥3.6/秒</td></tr>
-<tr><td>视频生成 · 4K（正片终稿）</td><td class="num">4.5 点/秒</td><td class="num">¥9.0/秒</td></tr>
-<tr><td>超分增强 720p→4K</td><td class="num">1.5 点/秒</td><td class="num">¥3.0/秒</td></tr>
-<tr><td>动作/表情迁移</td><td class="num">8–15 点/条(5s)</td><td class="num">¥16–30/条</td></tr>
-<tr><td>H100 卡时（训练/微调/批量增强）</td><td class="num">35 点/卡时</td><td class="num">¥70/卡时</td></tr>
-<tr><td>5090 卡时（渲染/剪辑）</td><td class="num">12 点/卡时</td><td class="num">¥24/卡时</td></tr>
-<tr><td>渲染农场按帧</td><td class="num">0.15–0.75 点/帧</td><td class="num">¥0.3–1.5/帧</td></tr>
-<tr><td><b>专属整机包月</b>（8×H100 独占）</td><td class="num">71,000 点/月</td><td class="num">≈¥10 万/月（基础设施档）</td></tr>
-<tr><td>国际模型池（GPT）</td><td class="num">100 点/百万 token</td><td class="num">¥200/百万</td></tr>
-<tr><td>国产模型池（Kimi K3/Qwen 3.8/DeepSeek V4/GLM-5.2）</td><td class="num">8 点/百万 token</td><td class="num">¥16/百万</td></tr>
-<tr><td>本地模型池（数据不出机房）</td><td class="num">2 点/百万 token</td><td class="num">¥4/百万</td></tr>
-<tr><td>存储 · 热（剪辑直读）/ 温 / 冷归档</td><td class="num">100 / 40 / 10 点每 TB·月</td><td class="num">¥200 / 80 / 20</td></tr>
-<tr><td>创作席位（AI 助手+画布工作流）</td><td class="num">1,000 点/席·月</td><td class="num">¥2,000/月</td></tr>
-<tr><td>云剪辑席位</td><td class="num">500 点/席·月</td><td class="num">¥1,000/月</td></tr>
-<tr><td>审片席位</td><td class="num">0 点</td><td class="num">免费不限量</td></tr>
+<tr><th>服务</th><th class="num">消耗</th><th class="num">基准档等效价</th></tr>
+<tr><td>视频生成 · 720p（海选/预演）</td><td class="num">1K/秒</td><td class="num">¥2.0/秒</td></tr>
+<tr><td>视频生成 · 1080p</td><td class="num">1.8K/秒</td><td class="num">¥3.6/秒</td></tr>
+<tr><td>视频生成 · 4K（正片终稿）</td><td class="num">4.5K/秒</td><td class="num">¥9.0/秒</td></tr>
+<tr><td>超分增强 720p→4K</td><td class="num">1.5K/秒</td><td class="num">¥3.0/秒</td></tr>
+<tr><td>动作/表情迁移</td><td class="num">8–15K/条(5s)</td><td class="num">¥16–30/条</td></tr>
+<tr><td>H100 卡时（训练/微调/批量增强）</td><td class="num">35K/卡时</td><td class="num">¥70/卡时</td></tr>
+<tr><td>5090 卡时（渲染/剪辑）</td><td class="num">12K/卡时</td><td class="num">¥24/卡时</td></tr>
+<tr><td>渲染农场按帧</td><td class="num">0.15–0.75K/帧</td><td class="num">¥0.3–1.5/帧</td></tr>
+<tr><td><b>专属整机包月</b>（8×H100 独占）</td><td class="num">7.1 万 K/月</td><td class="num">≈¥10 万/月（基础设施档）</td></tr>
+<tr><td>国际模型池（GPT）</td><td class="num">100K / 百万 token</td><td class="num">¥200/百万</td></tr>
+<tr><td>国产模型池（Kimi K3/Qwen 3.8/DeepSeek V4/GLM-5.2）</td><td class="num">8K / 百万 token</td><td class="num">¥16/百万</td></tr>
+<tr><td>本地模型池（数据不出机房）</td><td class="num">2K / 百万 token</td><td class="num">¥4/百万</td></tr>
+<tr><td>存储 · 热（剪辑直读）/ 温 / 冷归档</td><td class="num">100 / 40 / 10K 每 TB·月</td><td class="num">¥200 / 80 / 20</td></tr>
+<tr><td>创作席位（AI 助手+画布工作流）</td><td class="num">1,000K/席·月</td><td class="num">¥2,000/月</td></tr>
+<tr><td>云剪辑席位</td><td class="num">500K/席·月</td><td class="num">¥1,000/月</td></tr>
+<tr><td>审片席位</td><td class="num">0K</td><td class="num">免费不限量</td></tr>
 </table>
-<p class="small">人力型服务（驻场、定制工作流打造、栏目策划与制作、专属资产训练）<b>不计点数</b>，按项目单独计价——点数只衡量平台服务消耗。折点表年度校准，已购点数按购买时折点表兑现。</p>
+<p class="small">人力型服务（驻场、定制工作流打造、栏目策划与制作、专属资产训练）<b>不计 K token</b>，按项目单独计价——K token 只衡量平台服务消耗。消耗表年度校准，已购 K token 按购买时的消耗表兑现。</p>
 </div>
 
 <div class="ok reveal">
-<b>为什么用点数而不是分项计费：</b>创作节奏是波动的——这个月重生成、下个月重渲染、项目收尾时重存储。分项预算会让每一项都留余量，合计浪费 20–30%；<b>一个点数池按实际节奏自由流动，预算利用率接近 100%</b>，也让财务只需盯一个数字。
+<b>为什么统一成一种单位：</b>创作节奏是波动的——这个月重生成、下个月重渲染、项目收尾时重存储。分项预算会让每一项都留余量，合计浪费 20–30%；<b>一个 K token 池按实际节奏自由流动，预算利用率接近 100%</b>，也让财务只需盯一个数字。用不完的视频额度可以直接拿去跑渲染、做训练或买存储。
 </div>
 </section>
 
@@ -232,114 +233,114 @@ tr:hover td{background:rgba(255,255,255,.03)}
   <div class="spark">✦</div>
   <span class="leadpill">照着算你自己的</span>
   <h2>各类实体预算示例</h2>
-  <p>六个真实规模的换算样本：每月消耗多少点、全年多少预算。</p>
+  <p>六个真实规模的换算样本：每月消耗多少 K token、全年多少预算。</p>
 </div>
 
 <div class="grid g2">
 
 <div class="price-card glow-teal reveal">
 <div class="name">① AI 短剧团队 · 起步</div>
-<div class="range">57 万<small>/年（26 万点）</small></div>
+<div class="range">57 万<small>/年（26 万 K）</small></div>
 <table>
 <tr><td>规模设定</td><td class="num">8 人团队，月产 20 分钟成片</td></tr>
-<tr><td>720p 海选</td><td class="num">1,200s×3 候选 = 3,600 点/月</td></tr>
-<tr><td>4K 终稿</td><td class="num">1,200s×1.3 掷×4.5 = 7,020 点/月</td></tr>
-<tr><td>创作席位</td><td class="num">8 席 = 8,000 点/月</td></tr>
-<tr><td>模型/GPU/存储</td><td class="num">≈3,000 点/月</td></tr>
-<tr><td><b>月度合计</b></td><td class="num"><b>≈2.2 万点 → 约 4.8 万元</b></td></tr>
+<tr><td>720p 海选</td><td class="num">1,200s×3 候选 = 3,600 K/月</td></tr>
+<tr><td>4K 终稿</td><td class="num">1,200s×1.3 掷×4.5 = 7,020 K/月</td></tr>
+<tr><td>创作席位</td><td class="num">8 席 = 8,000 K/月</td></tr>
+<tr><td>模型/GPU/存储</td><td class="num">≈3,000 K/月</td></tr>
+<tr><td><b>月度合计</b></td><td class="num"><b>≈2.2 万 K → 约 4.8 万元</b></td></tr>
 </table>
-<p class="small">对应「短剧启航包」45 万/年——打包价较点数明细让利约 15%，且含接入部署与开工培训。</p>
+<p class="small">对应「短剧启航包」45 万/年——打包价较按量计费明细让利约 15%，且含接入部署与开工培训。</p>
 <div class="no">01</div>
 </div>
 
 <div class="price-card glow-purple reveal">
 <div class="name">② AI 短剧团队 · 量产</div>
-<div class="range">131 万<small>/年（69 万点）</small></div>
+<div class="range">131 万<small>/年（69 万 K）</small></div>
 <table>
 <tr><td>规模设定</td><td class="num">15 人团队，月产 60 分钟成片（≈2 集/周）</td></tr>
-<tr><td>720p 海选</td><td class="num">3,600s×3 候选 = 10,800 点/月</td></tr>
-<tr><td>4K 终稿</td><td class="num">3,600s×1.3 掷×4.5 = 21,060 点/月</td></tr>
-<tr><td>创作席位</td><td class="num">15 席 = 15,000 点/月</td></tr>
-<tr><td>LoRA 训练与首帧（GPU）</td><td class="num">200 卡时 = 7,000 点/月</td></tr>
-<tr><td>模型池 + 15TB 存储</td><td class="num">≈3,600 点/月</td></tr>
-<tr><td><b>月度合计</b></td><td class="num"><b>≈5.7 万点 → 约 10.9 万元</b></td></tr>
+<tr><td>720p 海选</td><td class="num">3,600s×3 候选 = 10,800 K/月</td></tr>
+<tr><td>4K 终稿</td><td class="num">3,600s×1.3 掷×4.5 = 21,060 K/月</td></tr>
+<tr><td>创作席位</td><td class="num">15 席 = 15,000 K/月</td></tr>
+<tr><td>LoRA 训练与首帧（GPU）</td><td class="num">200 卡时 = 7,000 K/月</td></tr>
+<tr><td>模型池 + 15TB 存储</td><td class="num">≈3,600 K/月</td></tr>
+<tr><td><b>月度合计</b></td><td class="num"><b>≈5.7 万 K → 约 10.9 万元</b></td></tr>
 </table>
-<p class="small">对应「短剧量产包」96 万/年（含 48 万点额度），超出部分按 ¥1.9–2.0/点续购。若把 4K 终稿的三成改走「720p+超分增强」路线，月消耗可降至 4.6 万点，全年省约 25 万。</p>
+<p class="small">对应「短剧量产包」96 万/年（含 48 万 K额度），超出部分按 ¥1.9–2.0/K 续购。若把 4K 终稿的三成改走「720p+超分增强」路线，月消耗可降至 4.6 万 K，全年省约 25 万。</p>
 <div class="no">02</div>
 </div>
 
 <div class="price-card glow-orange reveal">
 <div class="name">③ 专业项目 · 纪录片单集</div>
-<div class="range">5.7 万<small>/项目（2.6 万点）+ 人力</small></div>
+<div class="range">5.7 万<small>/项目（2.6 万 K）+ 人力</small></div>
 <table>
 <tr><td>规模设定</td><td class="num">50 分钟单集，其中 AI 生成部分 20 分钟</td></tr>
-<tr><td>720p 海选</td><td class="num">1,200s×2 候选 = 2,400 点</td></tr>
-<tr><td>4K 终稿</td><td class="num">1,200s×1.2 掷×4.5 = 6,480 点</td></tr>
-<tr><td>历史影像修复（GPU）</td><td class="num">300 卡时 = 10,500 点</td></tr>
-<tr><td>脚本/解说/检索（模型池）</td><td class="num">≈5,000 点</td></tr>
-<tr><td>项目存储 5TB×3 月</td><td class="num">600 点</td></tr>
-<tr><td><b>点数合计</b></td><td class="num"><b>≈2.6 万点 → 约 5.7 万元</b></td></tr>
+<tr><td>720p 海选</td><td class="num">1,200s×2 候选 = 2,400K</td></tr>
+<tr><td>4K 终稿</td><td class="num">1,200s×1.2 掷×4.5 = 6,480K</td></tr>
+<tr><td>历史影像修复（GPU）</td><td class="num">300 卡时 = 10,500K</td></tr>
+<tr><td>脚本/解说/检索（模型池）</td><td class="num">≈5,000K</td></tr>
+<tr><td>项目存储 5TB×3 月</td><td class="num">600K</td></tr>
+<tr><td><b>K token 合计</b></td><td class="num"><b>≈2.6 万 K → 约 5.7 万元</b></td></tr>
 </table>
-<p class="small"><b>点数只占项目预算的 10–25%</b>，主体是专项工作流打造与驻场（15–60 万，项目制现金）。这是专业项目型的典型结构：算力便宜，专业能力才是成本。</p>
+<p class="small"><b>K token 只占项目预算的 10–25%</b>，主体是专项工作流打造与驻场（15–60 万，项目制现金）。这是专业项目型的典型结构：算力便宜，专业能力才是成本。</p>
 <div class="no">03</div>
 </div>
 
 <div class="price-card glow-pink reveal">
 <div class="name">④ 央视定制栏目 · 周播首季</div>
-<div class="range">17.6 万<small>/季点数（8.8 万点）+ 制作</small></div>
+<div class="range">17.6 万<small>/季 K token（8.8 万 K）+ 制作</small></div>
 <table>
 <tr><td>规模设定</td><td class="num">13 期/季，每期 25 分钟，AI 部分 8 分钟</td></tr>
-<tr><td>720p 海选</td><td class="num">480s×2 = 960 点/期</td></tr>
-<tr><td>4K 终稿</td><td class="num">480s×1.2×4.5 = 2,592 点/期</td></tr>
-<tr><td>包装渲染 + 修复（GPU）</td><td class="num">≈2,000 点/期</td></tr>
-<tr><td>全国产模型池（合规要求）</td><td class="num">≈1,200 点/期</td></tr>
-<tr><td><b>每期 ≈6,800 点</b></td><td class="num"><b>13 期 ≈8.8 万点</b></td></tr>
+<tr><td>720p 海选</td><td class="num">480s×2 = 960 K/期</td></tr>
+<tr><td>4K 终稿</td><td class="num">480s×1.2×4.5 = 2,592 K/期</td></tr>
+<tr><td>包装渲染 + 修复（GPU）</td><td class="num">≈2,000 K/期</td></tr>
+<tr><td>全国产模型池（合规要求）</td><td class="num">≈1,200 K/期</td></tr>
+<tr><td><b>每期 ≈6,800K</b></td><td class="num"><b>13 期 ≈8.8 万 K</b></td></tr>
 </table>
-<p class="small">对应「央视定制栏目包」110 万/首季——点数占约 16%，其余为栏目开发、包装体系与常态制作人力。续季仅需点数续购与制作费，开发费不再重复。</p>
+<p class="small">对应「央视定制栏目包」110 万/首季——K token 占约 16%，其余为栏目开发、包装体系与常态制作人力。续季仅需 K token 续购与制作费，开发费不再重复。</p>
 <div class="no">04</div>
 </div>
 
 <div class="price-card glow-purple reveal">
 <div class="name">⑤ 政企/央视 · 专属托管</div>
-<div class="range">138 万<small>/年（≈87 万点 + 环境费）</small></div>
+<div class="range">138 万<small>/年（≈87 万 K + 环境费）</small></div>
 <table>
 <tr><td>规模设定</td><td class="num">8×H100 独占整机，自带团队与工作流</td></tr>
-<tr><td>专属整机包月</td><td class="num">71,000 点/月 = 85.2 万点/年</td></tr>
-<tr><td>存储 50TB 温存</td><td class="num">2,000 点/月 = 2.4 万点/年</td></tr>
-<tr><td>点数小计（基础设施档 ¥1.4）</td><td class="num">≈122 万/年</td></tr>
+<tr><td>专属整机包月</td><td class="num">71,000 K/月 = 85.2 万K/年</td></tr>
+<tr><td>存储 50TB 温存</td><td class="num">2,000 K/月 = 2.4 万K/年</td></tr>
+<tr><td>K token 小计（基础设施档 ¥1.4）</td><td class="num">≈122 万/年</td></tr>
 <tr><td>端口 + 接入配合（一次性）</td><td class="num">5.6 万</td></tr>
-<tr><td>合规环境包（不计点）</td><td class="num">8 万/年</td></tr>
+<tr><td>合规环境包（不计 K token）</td><td class="num">8 万/年</td></tr>
 <tr><td><b>首年合计</b></td><td class="num"><b>≈138 万</b></td></tr>
 </table>
-<p class="small">独占计费、不超卖、不与他人共享；点数可在整机额度外追加购买用于溢出任务。专线由客户自申，金泰收机房侧配合费。</p>
+<p class="small">独占计费、不超卖、不与他人共享；K token 可在整机额度外追加购买用于溢出任务。专线由客户自申，金泰收机房侧配合费。</p>
 <div class="no">05</div>
 </div>
 
 <div class="price-card glow-teal reveal">
 <div class="name">⑥ 影视/后期工作室</div>
-<div class="range">35 万<small>/年（16 万点）</small></div>
+<div class="range">35 万<small>/年（16 万 K）</small></div>
 <table>
 <tr><td>规模设定</td><td class="num">渲染为主，月 2 万帧 + 2 席云剪辑</td></tr>
-<tr><td>渲染农场</td><td class="num">2 万帧×0.5 = 10,000 点/月</td></tr>
-<tr><td>云剪辑席位</td><td class="num">2 席 = 1,000 点/月</td></tr>
-<tr><td>增强服务（超分/修复）</td><td class="num">≈2,000 点/月</td></tr>
-<tr><td>存储 5TB</td><td class="num">200 点/月</td></tr>
-<tr><td><b>月度合计</b></td><td class="num"><b>≈1.3 万点 → 约 2.9 万元</b></td></tr>
+<tr><td>渲染农场</td><td class="num">2 万帧×0.5 = 10,000 K/月</td></tr>
+<tr><td>云剪辑席位</td><td class="num">2 席 = 1,000 K/月</td></tr>
+<tr><td>增强服务（超分/修复）</td><td class="num">≈2,000 K/月</td></tr>
+<tr><td>存储 5TB</td><td class="num">200 K/月</td></tr>
+<tr><td><b>月度合计</b></td><td class="num"><b>≈1.3 万 K → 约 2.9 万元</b></td></tr>
 </table>
-<p class="small">现结型：也可按充值制（充 5 万送 20% 点数），无年度承诺、用完再充；审片席永久免费不计点。</p>
+<p class="small">现结型：也可按充值制（充 5 万送 20% K token 额度），无年度承诺、用完再充；审片席永久免费不计 K token。</p>
 <div class="no">06</div>
 </div>
 
 </div>
 
 <div class="ok reveal">
-<b>怎么估自己的预算：</b>把三件事量化即可——<b>月成片分钟数</b>（决定视频点，占大头）、<b>常用人数</b>（决定席位点）、<b>是否需要训练与渲染</b>（决定 GPU 点）。三项相加再乘 12，对照上表点数包档位即可确定单价。不确定时按低档签，年中可升档补差价，<b>升档不罚、降档不退</b>。
+<b>怎么估自己的预算：</b>把三件事量化即可——<b>月成片分钟数</b>（决定视频 K，占大头）、<b>常用人数</b>（决定席位 K）、<b>是否需要训练与渲染</b>（决定 GPU K）。三项相加再乘 12，对照上表预付包档位即可确定单价。不确定时按低档签，年中可升档补差价，<b>升档不罚、降档不退</b>。
 </div>
 </section>
 
 <div class="warn reveal">
 <b>报价单三条铁律（合规决定写法）：</b><br>
-① 统一计量单位为<b>「金泰算力点」</b>（覆盖席位/生成/卡时/存储/项目），<b>不转售上游模型 token、不转售线路带宽</b>——沿用"智算能力一键通、服务而非售卖"口径。<br>
+① 统一计量单位为<b>「K token」</b>（覆盖席位/生成/卡时/存储/项目），<b>不转售上游模型 token、不转售线路带宽</b>——沿用"智算能力一键通、服务而非售卖"口径。<br>
 ② <b>Claude 不出现在任何报价单与合同</b>；「国际先进模型通道」实际交付 = Azure OpenAI GPT（香港实体，结构未落地前此池标"预留开通"）+ 国产满血栈 Kimi K3/Qwen 3.8/DeepSeek V4/GLM-5.2 立即可售。<br>
 ③ <b>专线由客户自申自用</b>（责任归位），金泰只收机房侧接入配合费 1–3 万/次，不承诺、不转售国际线路。
 </div>
@@ -483,12 +484,12 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <div class="row"><label>月成片产量（4K 终稿）</label><input type="range" id="mins" min="10" max="120" value="60"><div class="val"><span id="minsV">60</span> 分钟</div></div>
 <div class="row"><label>海选候选数（720p/镜）</label><input type="range" id="takes" min="2" max="5" value="3"><div class="val"><span id="takesV">3</span> 候选</div></div>
 <div class="out">
-  <div><div class="n">¥<span id="oSeat">—</span></div><div class="l">席位月费（¥2,000/席）</div></div>
-  <div><div class="n">¥<span id="oVideo">—</span></div><div class="l">视频池月费（720p 海选 + 4K 终稿 1.3 掷，自动按承诺档取价）</div></div>
-  <div><div class="n">¥<span id="oTotal">—</span></div><div class="l">月费估算合计</div></div>
-  <div><div class="n">¥<span id="oYear">—</span> 万</div><div class="l">年框参考（×12 × 88% 打包让利）</div></div>
+  <div><div class="n"><span id="oTokens">—</span><em style="font-size:22px;font-style:normal;color:var(--dim)"> 万 K</span></div><div class="l">月度 K token 消耗</div></div>
+  <div><div class="n">¥<span id="oTotal">—</span></div><div class="l">月费估算（按档位单价 <span id="oRate">—</span>）</div></div>
+  <div><div class="n"><span id="oYearK">—</span><em style="font-size:22px;font-style:normal;color:var(--dim)"> 万 K</span></div><div class="l">年度 K token 需求 → 建议档位</div></div>
+  <div><div class="n">¥<span id="oYear">—</span><em style="font-size:22px;font-style:normal;color:var(--dim)"> 万</span></div><div class="l">年度预算（预付包）</div></div>
 </div>
-<p class="small" style="margin-top:14px">口径：席位含国产模型畅用与 GPT 用量档；视频池按每分钟 60 秒、海选按 5s/条折算；未含接入费（3–8 万一次性）、LoRA 定制与超额托管。仅作预算参考，正式报价以合同为准。</p>
+<p class="small" style="margin-top:14px">算法：席位 1,000K/席·月 + 720p 海选 1K/秒 + 4K 终稿 4.5K/秒（按 1.3 掷）；每分钟按 60 秒折算。年度用量自动匹配预付包档位单价（5/20/50/120 万 K 对应 ¥2.4/2.2/2.0/1.8），不足 5 万 K 按量计费 ¥2.6。未含 GPU 训练、存储、接入费与人力服务。仅作预算参考，正式报价以合同为准。</p>
 </div>
 </section>
 
@@ -615,27 +616,30 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <div class="card reveal" style="position:relative;overflow:visible">
 <div class="prism p3" style="right:-40px;top:-70px"></div>
 <table>
-<tr><th>套餐</th><th>适用</th><th>包含</th><th class="num">明细价/年</th><th class="num">打包价/年</th><th class="num">折合月付</th></tr>
+<tr><th>套餐</th><th>适用</th><th class="num">含 K token 额度</th><th class="num">折合单价</th><th>其余包含</th><th class="num">打包价</th></tr>
 <tr>
-<td><b>短剧启航包</b></td><td>8 人新团队起步</td><td>接入部署 + 8 创作席 + 视频池 2 万/月额度（两段式）+ LoRA×2 + <b>资产托管 8TB</b> + 开工培训 7 天</td>
-<td class="num">≈50 万</td><td class="num"><b>45 万</b></td><td class="num">3.75 万</td></tr>
+<td><b>短剧启航包</b></td><td>8 人新团队起步</td><td class="num"><b>20 万 K</b>/年</td><td class="num">¥2.25/K</td><td>接入部署 + 8 创作席 + LoRA×2 + 托管 8TB + 开工培训 7 天</td>
+<td class="num"><b>45 万/年</b><br><span class="small">月付 3.75 万</span></td></tr>
 <tr>
-<td><b>短剧量产包</b></td><td>15 人成熟团队</td><td>接入部署 + 15 创作席 + 视频池 5 万/月额度 + LoRA×5 + 云剪辑 2 席 + <b>资产托管 15TB（含热存 2TB 剪辑直读）</b> + 审片席不限量</td>
-<td class="num">≈109 万</td><td class="num"><b>96 万</b></td><td class="num">8 万</td></tr>
+<td><b>短剧量产包</b></td><td>15 人成熟团队</td><td class="num"><b>48 万 K</b>/年</td><td class="num">¥2.00/K</td><td>接入部署 + 15 创作席 + LoRA×5 + 云剪辑 2 席 + 托管 15TB（含热存 2TB）+ 审片席不限量</td>
+<td class="num"><b>96 万/年</b><br><span class="small">月付 8 万</span></td></tr>
 <tr>
-<td><b>整线承包包</b></td><td>只要成片的团队</td><td>交钥匙：月保底 60 成片分钟 ×¥1,200/分钟（含两段式生成+工作流+审片 QC，不含编剧导演），超出 ¥1,000/分钟；<b>含项目托管 5TB 与成片归档</b></td>
-<td class="num">—</td><td class="num"><b>86 万</b></td><td class="num">7.2 万起</td></tr>
+<td><b>整线承包包</b></td><td>只要成片的团队</td><td class="num"><b>43 万 K</b>/年</td><td class="num">¥2.00/K</td><td>交钥匙：月保底 60 成片分钟 ×¥1,200/分钟（含生成+工作流+审片 QC，不含编剧导演），超出 ¥1,000/分钟；含托管 5TB 与成片归档</td>
+<td class="num"><b>86 万/年</b><br><span class="small">月付 7.2 万起</span></td></tr>
 <tr>
-<td><b>专业项目专项包</b></td><td>纪录片/动画/修复等正片项目</td><td>专项工作流打造 + 项目专属算力池（承诺档再 9 折）+ 驻场 1 人 ×3 个月 + LoRA/风格资产 ×3 + <b>项目托管 5TB</b></td>
-<td class="num">≈52 万</td><td class="num"><b>45 万/项目起</b></td><td class="num">按项目</td></tr>
+<td><b>专业项目专项包</b></td><td>纪录片/动画/修复等正片项目</td><td class="num"><b>12 万 K</b>/项目</td><td class="num">¥2.00/K</td><td>专项工作流打造 + 驻场 1 人 ×3 个月 + LoRA/风格资产 ×3 + 项目托管 5TB</td>
+<td class="num"><b>45 万/项目起</b></td></tr>
 <tr>
-<td><b>央视定制栏目包</b></td><td>周播栏目首季（13 期）</td><td>栏目开发与包装体系 + 13 期常态制作 + 驻场对接 1 人 ×3 个月 + <b>栏目素材库托管 5TB（完结期转冷归档）</b>（全国产栈，台内终审双轨）</td>
-<td class="num">≈124 万</td><td class="num"><b>110 万/首季</b></td><td class="num">续季期费 9 折</td></tr>
+<td><b>央视定制栏目包</b></td><td>周播栏目首季（13 期）</td><td class="num"><b>8.8 万 K</b>/季</td><td class="num">¥2.00/K</td><td>栏目开发与包装体系 + 13 期常态制作 + 驻场对接 1 人 ×3 个月 + 素材库托管 5TB（全国产栈，台内终审双轨）</td>
+<td class="num"><b>110 万/首季</b><br><span class="small">续季期费 9 折</span></td></tr>
 <tr>
-<td><b>云上制片厂包</b></td><td>影视/后期工作室</td><td>渲染充值 5 万送 20% 额度 + 云剪辑 2 席 + <b>资产托管 2TB</b> + 增强池 9 折 + 审片席免费</td>
-<td class="num">—</td><td class="num"><b>充值制</b></td><td class="num">1.5 万起</td></tr>
+<td><b>云上制片厂包</b></td><td>影视/后期工作室</td><td class="num"><b>3 万 K</b>（充 5 万送 20%）</td><td class="num">¥1.67/K</td><td>云剪辑 2 席 + 资产托管 2TB + 增强服务 9 折 + 审片席免费</td>
+<td class="num"><b>充值制</b><br><span class="small">1.5 万起</span></td></tr>
+<tr>
+<td><b>专属托管包</b></td><td>政企/央视自带团队</td><td class="num"><b>87 万 K</b>/年<br><span class="small">基础设施档</span></td><td class="num">¥1.40/K</td><td>8×H100 独占整机 + 50TB 温存 + 端口接入 + 合规环境包（等保三级/专属域/审计）</td>
+<td class="num"><b>138 万/首年</b><br><span class="small">月付 11.5 万</span></td></tr>
 </table>
-<p class="small">打包规则：① 年框一次签、分季度付；② 池额度季度内滚存、不跨年；③ 打包价已含年付优惠，不与 9 折叠加；④ 额度用尽按对应承诺档单价续购，不断工；⑤ 套餐外专属服务（驻场/定制工作流/私有化）仍按项目制另计；⑥ 各套餐已含上列资产托管额度（数据不落地、统一托管于金泰数据中心），超出部分按「数字资产托管」价目计费，退租享 90 天保留期。</p>
+<p class="small">打包规则：① 年框一次签、分季度付；② K token 额度季度内滚存、不跨年；③ 打包价已含年付优惠，不与 9 折叠加；④ <b>额度用尽后自动转按量计费（¥2.6/K）不断工</b>，或按同档单价续购；⑤ 套餐外人力型服务（驻场/定制工作流/私有化）不计 K token，按项目制另计；⑥ 各套餐已含资产托管额度（数据不落地、统一托管于金泰数据中心），超出部分按托管价目计费，退租享 90 天保留期。</p>
 </div>
 
 <div class="ok reveal">
@@ -702,26 +706,31 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
 (() => {
   const seats = document.getElementById('seats'), mins = document.getElementById('mins'), takes = document.getElementById('takes');
   const fmt = n => n.toLocaleString('zh-CN', {maximumFractionDigits: 0});
-  function tier(videoSpend) {
-    if (videoSpend >= 200000) return {p720: 1.5, p4k: 7.0};
-    if (videoSpend >= 100000) return {p720: 1.6, p4k: 8.0};
-    if (videoSpend >= 50000)  return {p720: 1.8, p4k: 8.5};
-    return {p720: 2.0, p4k: 9.0};
+  // 年度 K token 用量 → 预付包档位单价
+  function rate(yearK) {
+    if (yearK >= 1200000) return 1.8;
+    if (yearK >= 500000)  return 2.0;
+    if (yearK >= 200000)  return 2.2;
+    if (yearK >= 50000)   return 2.4;
+    return 2.6; // 不足 5 万 K：按量计费
   }
   function calc() {
     const s = +seats.value, m = +mins.value, k = +takes.value;
     document.getElementById('seatsV').textContent = s;
     document.getElementById('minsV').textContent = m;
     document.getElementById('takesV').textContent = k;
-    const seatFee = s * 2000;
-    let v = m * 60 * (k * 2.0 + 1.3 * 9.0);
-    const t = tier(v);
-    v = m * 60 * (k * t.p720 + 1.3 * t.p4k);
-    const total = seatFee + v;
-    document.getElementById('oSeat').textContent = fmt(seatFee);
-    document.getElementById('oVideo').textContent = fmt(v);
-    document.getElementById('oTotal').textContent = fmt(total);
-    document.getElementById('oYear').textContent = (total * 12 * 0.88 / 10000).toFixed(0);
+    const sec = m * 60;
+    const seatK = s * 1000;                  // 席位 1,000K/席·月
+    const scoutK = sec * k * 1;              // 720p 海选 1K/秒 × 候选数
+    const finalK = sec * 1.3 * 4.5;          // 4K 终稿 4.5K/秒 × 1.3 掷
+    const monthK = seatK + scoutK + finalK;
+    const yearK = monthK * 12;
+    const r = rate(yearK);
+    document.getElementById('oTokens').textContent = (monthK / 10000).toFixed(1);
+    document.getElementById('oRate').textContent = '¥' + r.toFixed(1) + '/K';
+    document.getElementById('oTotal').textContent = fmt(monthK * r);
+    document.getElementById('oYearK').textContent = (yearK / 10000).toFixed(0);
+    document.getElementById('oYear').textContent = (yearK * r / 10000).toFixed(0);
   }
   [seats, mins, takes].forEach(el => el.addEventListener('input', calc));
   calc();
