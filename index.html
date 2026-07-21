@@ -134,6 +134,16 @@ tr:hover td{background:rgba(255,255,255,.03)}
 .calc .out .n{font-size:40px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
 .calc .out .l{font-size:16px;color:var(--dim)}
 
+/* ===== 用量画像条 ===== */
+.usage{margin:16px 0 6px}
+.usage .bar{display:flex;height:11px;border-radius:6px;overflow:hidden;background:rgba(255,255,255,.06);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+.usage .bar i{display:block;height:100%}
+.usage .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:15px;color:var(--dim);margin-top:9px}
+.usage .legend b{font-weight:400}
+.usage .legend em{font-style:normal;display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.ptrait{background:rgba(255,255,255,.04);border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:17px;line-height:1.7}
+.pbasis{background:rgba(123,92,255,.08);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:17px;line-height:1.7}
+
 /* ===== 显现动画 ===== */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:none}
@@ -149,7 +159,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <nav>
   <div class="logo"><b>金泰AI<em>.</em></b></div>
   <div class="links">
-    <a href="#points">K token 计价</a><a href="#budget">预算示例</a><a href="#s1">视频池</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s5">打包价</a>
+    <a href="#profiles">分实体计费</a><a href="#points">K token 计价</a><a href="#budget">预算示例</a><a href="#s1">视频池</a><a href="#calc">月费试算</a><a href="#s3">客户报价</a><a href="#s5">打包价</a>
   </div>
   <a class="pill" href="#s5">查看打包价</a>
 </nav>
@@ -172,6 +182,126 @@ tr:hover td{background:rgba(255,255,255,.03)}
   <div class="c"><div class="k">720P 视频消耗</div><div class="v"><span class="cnt" data-t="1" data-d="0">0</span><em>K/秒</em></div></div>
   <div class="c"><div class="k">4K 视频消耗</div><div class="v"><span class="cnt" data-t="4.5" data-d="1">0</span><em>K/秒</em></div></div>
 </div>
+
+<!-- ===== 实体计费档案 ===== -->
+<section class="sec" id="profiles">
+<div class="sec-head reveal">
+  <div class="spark">✦</div>
+  <span class="leadpill">先看你属于哪一类</span>
+  <h2>按工作特性计费</h2>
+  <p>六类实体的干活方式不同，用量结构就不同，计量口径与档位依据也不同。下面是每一类的完整计费依据。</p>
+</div>
+
+<div class="grid g2">
+
+<div class="price-card glow-teal reveal">
+<div class="name">① AI 短剧团队</div>
+<div class="ptrait"><b>工作特性：</b>单集约 78 个镜头，每镜要 3–5 次重掷才过导演关；分镜脚本高频迭代；角色一致性依赖 LoRA 锁脸训练。用量在开机期集中爆发、进入剪辑期后骤降。</div>
+<div class="usage">
+  <div class="bar"><i style="width:70%;background:var(--teal)"></i><i style="width:20%;background:var(--purple)"></i><i style="width:10%;background:var(--orange)"></i></div>
+  <div class="legend"><b><em style="background:var(--teal)"></em>视频生成 70%</b><b><em style="background:var(--purple)"></em>席位 20%</b><b><em style="background:var(--orange)"></em>训练与存储 10%</b></div>
+</div>
+<div class="pbasis"><b>收费依据：</b><br>
+· <b>按秒不按镜头</b>——镜头时长从 2 秒到 12 秒不等，按镜头计费会让长镜头团队吃亏；<br>
+· <b>海选与终稿分档（1K vs 4.5K）</b>——重掷绝大多数发生在海选阶段，单次成本仅为终稿的 22%，让"多试几版"不再肉疼；<br>
+· <b>额度季度滚存</b>——对冲开机期波峰与剪辑期波谷，不必为平均值买单。</div>
+<table>
+<tr><td>典型月用量</td><td class="num">2.2–5.7 万 K（8–15 人规模）</td></tr>
+<tr><td>适配方案</td><td class="num">预付包 20–50 万 K/年 · ¥2.0–2.2/K</td></tr>
+</table>
+</div>
+
+<div class="price-card glow-purple reveal">
+<div class="name">② 专业项目制作方</div>
+<div class="ptrait"><b>工作特性：</b>项目制运作，3–6 个月一个周期；前期调研与脚本吃文本、中期集中生成、后期只剩存储与交付。修复/上色类项目的 GPU 卡时占比远高于生成。</div>
+<div class="usage">
+  <div class="bar"><i style="width:45%;background:var(--teal)"></i><i style="width:35%;background:var(--pink)"></i><i style="width:20%;background:var(--orange)"></i></div>
+  <div class="legend"><b><em style="background:var(--teal)"></em>视频生成 45%</b><b><em style="background:var(--pink)"></em>GPU 修复增强 35%</b><b><em style="background:var(--orange)"></em>模型与存储 20%</b></div>
+</div>
+<div class="pbasis"><b>收费依据：</b><br>
+· <b>按项目授予额度而非按年度</b>——项目结束即结算，不为项目之间的空窗期付费；<br>
+· <b>修复增强按卡时计</b>——这类任务无法用"秒"衡量（一秒素材可能要跑十分钟），按卡时才与真实消耗对应；<br>
+· <b>完结后素材自动转冷归档</b>——存储支出降至四分之一，不需要人工清理。</div>
+<table>
+<tr><td>典型项目用量</td><td class="num">2.6 万 K（单集纪录片）～8 万 K（长周期正片）</td></tr>
+<tr><td>适配方案</td><td class="num">项目包 12 万 K 起 · ¥2.0/K + 人力项目制</td></tr>
+</table>
+</div>
+
+<div class="price-card glow-pink reveal">
+<div class="name">③ 央视栏目组</div>
+<div class="ptrait"><b>工作特性：</b>周播刚性节奏，每期用量高度可预测（波动小于 15%）；全国产栈合规要求，国际模型池消耗为零；台内终审可能触发返工重做。</div>
+<div class="usage">
+  <div class="bar"><i style="width:55%;background:var(--teal)"></i><i style="width:30%;background:var(--pink)"></i><i style="width:15%;background:var(--orange)"></i></div>
+  <div class="legend"><b><em style="background:var(--teal)"></em>视频生成 55%</b><b><em style="background:var(--pink)"></em>包装渲染 30%</b><b><em style="background:var(--orange)"></em>国产模型池 15%</b></div>
+</div>
+<div class="pbasis"><b>收费依据：</b><br>
+· <b>按季包干、与季播制对齐</b>——一季 13 期一次性授予额度，季度评估续订，不做年度锁定；<br>
+· <b>用量可预测 + 合规限制降低了高价服务消耗</b>，因此直接给基准档而非零售档；<br>
+· <b>终审返工镜头单独补充额度</b>，不占用常规期额度——返工源于审片流程而非制作方过错。</div>
+<table>
+<tr><td>典型每期用量</td><td class="num">≈6,800K（25 分钟节目含 8 分钟 AI 内容）</td></tr>
+<tr><td>适配方案</td><td class="num">季度包 8.8 万 K · ¥2.0/K，续季期费 9 折</td></tr>
+</table>
+</div>
+
+<div class="price-card glow-orange reveal">
+<div class="name">④ 影视/后期工作室</div>
+<div class="ptrait"><b>工作特性：</b>渲染密集型，几乎不用生成服务；夜间批量提交、白天审片改稿；接单量波动大，旺季与淡季相差三倍以上。</div>
+<div class="usage">
+  <div class="bar"><i style="width:75%;background:var(--orange)"></i><i style="width:15%;background:var(--pink)"></i><i style="width:10%;background:var(--purple)"></i></div>
+  <div class="legend"><b><em style="background:var(--orange)"></em>渲染农场 75%</b><b><em style="background:var(--pink)"></em>增强服务 15%</b><b><em style="background:var(--purple)"></em>席位与存储 10%</b></div>
+</div>
+<div class="pbasis"><b>收费依据：</b><br>
+· <b>渲染按帧不按卡时</b>——工作室能数清帧数却控制不了卡时，按帧才做得出预算、对得上账；<br>
+· <b>不设年度承诺、采用充值制</b>——接单波动大，年框只会造成旺季不够用、淡季白浪费；<br>
+· <b>夜间提交享排队优先</b>——夜间是机房的填谷时段，用调度让利换取错峰，双方都受益。</div>
+<table>
+<tr><td>典型月用量</td><td class="num">1.3 万 K（月 2 万帧 + 2 席云剪辑）</td></tr>
+<tr><td>适配方案</td><td class="num">充值制（充 5 万送 20% 额度）· 折合 ¥1.67/K</td></tr>
+</table>
+</div>
+
+<div class="price-card glow-purple reveal">
+<div class="name">⑤ 政企/央视自带团队</div>
+<div class="ptrait"><b>工作特性：</b>自有工作流、存储与团队，只需要算力本身；要求资源独占不超卖；合规环境（等保三级、数据不出楼）是刚需而非增值项。</div>
+<div class="usage">
+  <div class="bar"><i style="width:96%;background:var(--purple)"></i><i style="width:4%;background:var(--orange)"></i></div>
+  <div class="legend"><b><em style="background:var(--purple)"></em>独占整机 96%</b><b><em style="background:var(--orange)"></em>存储 4%</b></div>
+</div>
+<div class="pbasis"><b>收费依据：</b><br>
+· <b>按独占资源包月而非按实际利用率</b>——独占本身就是所购买的价值，"随时可用、无人争抢"才是这类客户的核心诉求；<br>
+· <b>不含生成与国际模型服务</b>，因此走基础设施专档 ¥1.4/K，较平台服务档低 30%；<br>
+· <b>合规环境包按年费单列、不计 K token</b>——它属于资质与环境成本，不是算力消耗。</div>
+<table>
+<tr><td>典型年用量</td><td class="num">87 万 K（8×H100 独占 + 50TB 温存）</td></tr>
+<tr><td>适配方案</td><td class="num">专属托管包 · ¥1.4/K + 合规环境包 8 万/年</td></tr>
+</table>
+</div>
+
+<div class="price-card glow-teal reveal">
+<div class="name">⑥ 高校教学共创</div>
+<div class="ptrait"><b>工作特性：</b>课时内并发峰值高（数十人同时提交）、单次请求轻量、寒暑假归零；教学过程的价值高于产出成片的质量。</div>
+<div class="usage">
+  <div class="bar"><i style="width:80%;background:var(--teal)"></i><i style="width:15%;background:var(--purple)"></i><i style="width:5%;background:var(--orange)"></i></div>
+  <div class="legend"><b><em style="background:var(--teal)"></em>本地模型池 80%</b><b><em style="background:var(--purple)"></em>720p 短片 15%</b><b><em style="background:var(--orange)"></em>席位 5%</b></div>
+</div>
+<div class="pbasis"><b>收费依据：</b><br>
+· <b>按学期结算而非按年</b>——避免为寒暑假的空转时段付费；<br>
+· <b>限定本地模型池与 720p 档</b>——教学场景不需要 4K 与国际模型，用低消耗服务把单个学生的成本压到最低；<br>
+· <b>峰值并发靠排队而非扩容</b>——教学场景可容忍等待，不必为瞬时峰值购买冗余算力。</div>
+<table>
+<tr><td>典型学期用量</td><td class="num">15–25 万 K（200 席规模）</td></tr>
+<tr><td>适配方案</td><td class="num">共创档 · 按学期结算，可用教学内容与人才池置换</td></tr>
+</table>
+</div>
+
+</div>
+
+<div class="ok reveal">
+<b>三条通用的计费原则：</b>① <b>按客户能数得清的东西计费</b>——秒、帧、期、席位、整机，都是客户自己能核对的量，不用无法验证的口径；② <b>让节奏决定周期</b>——项目制按项目、季播按季、教学按学期、渲染按充值，不强推统一年框；③ <b>用不到的能力不收费</b>——不用国际模型就不摊国际池成本，不用生成服务就走基础设施档。
+</div>
+</section>
 
 <!-- ===== K token 计价 ===== -->
 <section class="sec" id="points">
