@@ -341,15 +341,32 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <tr><td>5090 卡时（渲染/剪辑）</td><td class="num">12K/卡时</td><td class="num">¥24/卡时</td></tr>
 <tr><td>渲染农场按帧</td><td class="num">0.15–0.75K/帧</td><td class="num">¥0.3–1.5/帧</td></tr>
 <tr><td><b>专属整机包月</b>（8×H100 独占）</td><td class="num">7.1 万 K/月</td><td class="num">≈¥10 万/月（基础设施档）</td></tr>
-<tr><td>国际模型池（GPT）</td><td class="num">100K / 百万 token</td><td class="num">¥200/百万</td></tr>
-<tr><td>国产模型池（Kimi K3/Qwen 3.8/DeepSeek V4/GLM-5.2）</td><td class="num">8K / 百万 token</td><td class="num">¥16/百万</td></tr>
-<tr><td>本地模型池（数据不出机房）</td><td class="num">2K / 百万 token</td><td class="num">¥4/百万</td></tr>
+<tr><td>模型调用（文本/多模态）</td><td class="num" colspan="2">按模型分档，输入/输出分别计价 —— 见下表</td></tr>
 <tr><td>存储 · 热（剪辑直读）/ 温 / 冷归档</td><td class="num">100 / 40 / 10K 每 TB·月</td><td class="num">¥200 / 80 / 20</td></tr>
 <tr><td>创作席位（AI 助手+画布工作流）</td><td class="num">1,000K/席·月</td><td class="num">¥2,000/月</td></tr>
 <tr><td>云剪辑席位</td><td class="num">500K/席·月</td><td class="num">¥1,000/月</td></tr>
 <tr><td>审片席位</td><td class="num">0K</td><td class="num">免费不限量</td></tr>
 </table>
 <p class="small">人力型服务（驻场、定制工作流打造、栏目策划与制作、专属资产训练）<b>不计 K token</b>，按项目单独计价——K token 只衡量平台服务消耗。消耗表年度校准，已购 K token 按购买时的消耗表兑现。</p>
+</div>
+
+<div class="card reveal">
+<h3>模型池：按模型分档，输入 / 输出分别计价</h3>
+<table>
+<tr><th>模型</th><th class="num">输入消耗</th><th class="num">输出消耗</th><th class="num">基准档等效价（输入 / 输出）</th></tr>
+<tr><td><b>国际池</b> · GPT-5.6 Sol</td><td class="num">45K/百万</td><td class="num">270K/百万</td><td class="num">¥90 / ¥540</td></tr>
+<tr><td>国际池 · GPT-5.6 Terra（轻量）</td><td class="num">22K/百万</td><td class="num">135K/百万</td><td class="num">¥44 / ¥270</td></tr>
+<tr><td><b>国产池</b> · Kimi K3 满血版</td><td class="num">4K/百万</td><td class="num">16K/百万</td><td class="num">¥8 / ¥32</td></tr>
+<tr><td>国产池 · GLM-5.2</td><td class="num">4K/百万</td><td class="num">14K/百万</td><td class="num">¥8 / ¥28</td></tr>
+<tr><td>国产池 · Qwen 3.8 满血版</td><td class="num">2.5K/百万</td><td class="num">10K/百万</td><td class="num">¥5 / ¥20</td></tr>
+<tr><td>国产池 · DeepSeek V4 满血版</td><td class="num">1.5K/百万</td><td class="num">6K/百万</td><td class="num">¥3 / ¥12</td></tr>
+<tr><td><b>本地池</b> · 自建推理（数据不出机房）</td><td class="num">1K/百万</td><td class="num">1K/百万</td><td class="num">¥2 / ¥2</td></tr>
+</table>
+<p class="small">
+<b>为什么输入与输出分开计价：</b>输出（生成）的算力开销是输入（读取）的 3–4 倍，各家模型厂商的定价规则均按此区分。若合并成一个均价，做长文本创作的客户（输出重）就会被做资料检索的客户（输入重）搭便车，两边都不公平。<br>
+<b>为什么按模型分档：</b>四个国产模型之间的实际单价相差 2–5 倍，打包成统一价会让所有人都去调用最贵的那个。分档之后，<b>网关默认按任务路由到性价比最优的模型</b>——批量处理走 DeepSeek V4、长上下文与全稿走 Kimi K3、视觉理解走 Qwen 3.8、综合任务走 GLM-5.2，客户也可在工作流中指定模型。<br>
+<b>席位包含额度：</b>创作席内含国产池与本地池的常规用量（软限额，覆盖日常剧本、分镜、检索），超出部分与国际池调用按上表据实计费。
+</p>
 </div>
 
 <div class="ok reveal">
@@ -469,10 +486,10 @@ tr:hover td{background:rgba(255,255,255,.03)}
 </section>
 
 <div class="warn reveal">
-<b>报价单三条铁律（合规决定写法）：</b><br>
-① 统一计量单位为<b>「K token」</b>（覆盖席位/生成/卡时/存储/项目），<b>不转售上游模型 token、不转售线路带宽</b>——沿用"智算能力一键通、服务而非售卖"口径。<br>
-② <b>Claude 不出现在任何报价单与合同</b>；「国际先进模型通道」实际交付 = Azure OpenAI GPT（香港实体，结构未落地前此池标"预留开通"）+ 国产满血栈 Kimi K3/Qwen 3.8/DeepSeek V4/GLM-5.2 立即可售。<br>
-③ <b>专线由客户自申自用</b>（责任归位），金泰只收机房侧接入配合费 1–3 万/次，不承诺、不转售国际线路。
+<b>服务与合规说明：</b><br>
+① 统一计量单位为<b>「K token」</b>，覆盖席位、生成、卡时、存储与项目服务。金泰按自有平台服务计量收费，<b>不转售上游模型 token，不转售线路带宽</b>——沿用"智算能力一键通、服务而非售卖"的一贯口径。<br>
+② <b>国产满血栈</b>（Kimi K3 / Qwen 3.8 / DeepSeek V4 / GLM-5.2）即刻可用；国际先进模型通道以合规架构交付，在架构落地前于价目中标注"预留开通"，不做未生效的服务承诺。<br>
+③ <b>专线由客户以自身名义申请自用</b>（责任归位），金泰仅收取机房侧接入配合费 1–3 万/次，不承诺、不转售国际线路。
 </div>
 
 <!-- ===== 壹 视频池 ===== -->
@@ -481,7 +498,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
   <div class="spark">✦</div>
   <span class="leadpill">核心池 · Seedance 双档</span>
   <h2>视频生成池价目</h2>
-  <p>720p 海选 + 4K 终稿的两段式出片，是全方案的核心机制与毛利来源。</p>
+  <p>720p 海选 + 4K 终稿的两段式出片，是全方案的核心机制——同样预算多出 40–60% 可用镜头。</p>
 </div>
 
 <div class="card reveal">
@@ -498,7 +515,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 
 <div class="ok reveal">
 <b>两段式出片：720p 海选（3 候选/镜）→ 导演画布选定 → 4K 终稿单掷。</b><br>
-7 分钟 78 镜剧集：海选 78×3×5s×¥1 ≈ ¥1,170 + 4K 终稿 420s×1.3 掷×¥5 ≈ ¥2,730，合计成本 <b>≈¥3,900/集</b>（全 4K 直掷 ≈¥5,250，省 26%）；平价路线（720p 终稿+本地超分）压到 <b>≈¥1,700/集</b>。同一预算多出 40–60% 可用镜头量——这就是画布工作流相对裸 API 的溢价正当性。
+7 分钟 78 镜剧集：海选 78×3×5s = 1,170K + 4K 终稿 420s×1.3 掷 = 2,457K，合计 <b>≈3,600K/集</b>；若全部直出 4K（2.5 掷）需 ≈4,700K，<b>多耗 30%</b>；平价路线（720p 终稿 + 超分增强）可压到 <b>≈1,950K/集</b>。同一预算多出 40–60% 可用镜头量——这就是画布工作流相对裸 API 的价值。
 </div>
 </section>
 
@@ -516,74 +533,21 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <tr><th>计价项</th><th>内容</th><th class="num">区间</th></tr>
 <tr><td><b>接入费</b>（一次性）</td><td>网关 Key + 工作空间 + 画布工作流部署与定制 + 资产库初始化</td><td class="num">3–15 万</td></tr>
 <tr><td><b>席位月费</b></td><td>AI 助手 + 画布创作合成剪辑（创作席/审片席/管理席三型）</td><td class="num">¥50–3,000/席/月</td></tr>
-<tr><td><b>用量池</b>（月承诺阶梯）</td><td>①国产模型池（多含在席位内）②国际模型池 GPT（2–3× 成本计档）③视频生成池 ④GPU 工时</td><td class="num">按池</td></tr>
+<tr><td><b>用量池</b>（按 K token 计）</td><td>①模型池（国产/国际/本地，输入输出分别计价）②视频生成池 ③GPU 工时 ④存储</td><td class="num">按池</td></tr>
 <tr><td><b>专属服务</b></td><td>驻场 / 定制工作流 / LoRA 训练（0.5–2 万/个）/ 私有化部署</td><td class="num">项目制</td></tr>
 </table>
 
-<h3>GPU 工时池（四工厂对外）</h3>
+<h3>GPU 工时与渲染</h3>
 <table>
-<tr><th>资源</th><th class="num">我方全摊成本</th><th class="num">对外价</th><th>用途</th></tr>
-<tr><td>5090 卡时</td><td class="num">¥4–9/卡时（利用率 95%–50%）</td><td class="num">¥20–30/卡时</td><td>渲染/增强/云剪辑底层</td></tr>
-<tr><td>H100 卡时</td><td class="num">¥11–26/卡时（利用率 95%–50%）</td><td class="num">¥60–100/卡时</td><td>训练/微调/批量增强；见 TCO 表</td></tr>
-<tr><td>渲染农场按帧</td><td class="num">—</td><td class="num">¥0.3–1.5/帧</td><td>UE/Blender/C4D，按分辨率档</td></tr>
-<tr><td>云剪辑席位</td><td class="num">—</td><td class="num">¥800–1,500/席/月</td><td>DaVinci/PR 云工作站，素材不出机房</td></tr>
+<tr><th>资源</th><th class="num">价格</th><th class="num">K token 消耗</th><th>用途</th></tr>
+<tr><td>5090 卡时</td><td class="num">¥20–30/卡时</td><td class="num">12K/卡时</td><td>渲染/增强/云剪辑底层</td></tr>
+<tr><td>H100 卡时</td><td class="num">¥60–100/卡时</td><td class="num">35K/卡时</td><td>训练/微调/批量增强</td></tr>
+<tr><td>渲染农场按帧</td><td class="num">¥0.3–1.5/帧</td><td class="num">0.15–0.75K/帧</td><td>UE/Blender/C4D，按分辨率档</td></tr>
+<tr><td>云剪辑席位</td><td class="num">¥800–1,500/席/月</td><td class="num">500K/席·月</td><td>DaVinci/PR 云工作站，素材不出机房</td></tr>
 </table>
 
-<h3>大模型池成本锚点（文本/多模态，每百万 token，汇率按 7.2）</h3>
-<table>
-<tr><th>模型</th><th class="num">成本 输入/输出</th><th>对外形态</th><th>说明</th></tr>
-<tr><td><b>GPT-5.6 Sol</b>（Azure 国际版）</td><td class="num">¥36 / ¥216</td><td>国际池加油包：<b>¥1,000 ≈ 500 万 token</b>（混合口径，约 2.5× 成本）</td><td>剧本/分镜/QC 视觉主力；结构落地前标"预留开通"</td></tr>
-<tr><td>GPT-5.6 Terra（轻量）</td><td class="num">¥18 / ¥108</td><td>并入国际池加油包，网关自动降级用</td><td>晚间/批处理自动切换省一半</td></tr>
-<tr><td><b>Claude Opus 4.8 / Sonnet 5</b></td><td class="num">¥36/¥180 · ¥22/¥108</td><td><span class="tag red">不对外 · 不进合同 · 不定价</span></td><td>仅 A 层内部生产工具，成本走内部年度预算池，与客户池完全隔离</td></tr>
-<tr><td><b>Kimi K3 满血版</b>（估 · 将接入）</td><td class="num">≈¥4 / ¥16</td><td>国产池：<b>包进席位费畅用</b>（软限额）</td><td>长上下文/剧本全稿/Agent 任务的网关首选路由</td></tr>
-<tr><td><b>Qwen 3.8 满血版</b>（估 · 将接入）</td><td class="num">≈¥2.5 / ¥10</td><td>国产池：包进席位费畅用（软限额）</td><td>多模态/视觉理解主力，QC 审片国产兜底升级</td></tr>
-<tr><td><b>DeepSeek V4 满血版</b>（估 · 将接入）</td><td class="num">≈¥1.5 / ¥6</td><td>国产池：包进席位费畅用（软限额）</td><td>推理性价比最优，夜间批处理优先路由</td></tr>
-<tr><td><b>GLM-5.2</b>（估）</td><td class="num">≈¥4 / ¥14</td><td>国产池：包进席位费畅用（软限额）</td><td>综合主力，签约前按官网校准</td></tr>
-<tr><td>Gemini（Vertex）</td><td class="num">资格审核中</td><td>预留</td><td>审核通过后并入国际池</td></tr>
-<tr><td><b>本地 vLLM</b>（Qwen3.6-35B 等，H100）</td><td class="num">全摊 ≈¥0.5–1 · 边际≈电费</td><td>零 API 成本：表单代理 / 敏感数据兜底 / 夜间批处理</td><td>1×H100 支撑数百并发轻请求，席位费高毛利的底层</td></tr>
-</table>
-
-<h3>原则外情形：Claude API 接入预测成本 <span class="tag red">前提未满足前不生效</span></h3>
-<table>
-<tr><th>项</th><th class="num">预测</th><th>说明</th></tr>
-<tr><td><b>生效前提</b>（缺一不可）</td><td class="num">—</td><td>引入<b>真实独立外资合作方</b>（非金泰控股结构）+ 取得 <b>Anthropic 官方书面确认</b></td></tr>
-<tr><td>API 单价成本</td><td class="num">Opus ¥36/¥180 · Sonnet ¥22/¥108</td><td>每百万 token，2026-07 牌价折算</td></tr>
-<tr><td>重度创作席月成本</td><td class="num">¥1,800–2,400/席</td><td>按内部双轨制实测口径（工作日 $12–13/天软上限，周末共享池）</td></tr>
-<tr><td>团队池年成本</td><td class="num">10 重度席 ≈22–29 万；50 人三层 ≈65 万</td><td>50 人口径即现行内部 $9 万/年封顶方案</td></tr>
-<tr><td>结构与合规成本</td><td class="num">首年 25–60 万 + 年维持 10–20 万</td><td>外资合作结构 / 法务合规体检 / 数据出境标准合同 / 审计，周期 8–14 周</td></tr>
-<tr><td>若对外计价</td><td class="num">席位附加 ¥3,000–5,000/席/月</td><td>约 2–2.5× 成本；<b>合同与报价单不点名模型，只称"国际池 Plus 档"</b></td></tr>
-<tr><td><b>风险定性</b></td><td class="num">—</td><td>前提未满足时的任何接入形态均违反使用政策、<b>随时断供</b>——不可写入客户 SLA，不可作为收入预测依据；本表仅作决策参考</td></tr>
-</table>
-
-<div class="ok" style="margin-top:14px">
-<b>席位成本解剖（以短剧创作席 ¥2,000/月为例）：</b>国产池实际消耗 ≈¥80–150 + 国际池档位（GPT）≈¥200–400 + 平台/网关/存储摊销 ≈¥200 + 支持服务 ≈¥100 → <b>单席成本 ≈¥600–850，毛利 57–70%</b>。<b>席位费的毛利本质是"本地算力 + 国产低价模型"扛走了绝大多数请求，闭源贵模型只在刀刃上用</b>。
-</div>
 </div>
 
-<div class="card reveal">
-<h3>自有算力全成本模型（TCO · 12 卡底座，年化）</h3>
-<table>
-<tr><th>成本项</th><th class="num">万元/年</th><th>口径</th></tr>
-<tr><td><b>硬件折旧</b></td><td class="num">70–80</td><td>8×H100 整机 200–250 万按 4 年直线 + 4×5090 节点 25–30 万按 3 年 + 存储/网络 40 万按 4 年</td></tr>
-<tr><td>电费 + 散热</td><td class="num">8–11</td><td>IT 负载 ≈12.5kW × <b>PUE 1.4</b>（风冷智算柜含制冷）× 工业电价 ¥0.7/度 × 利用率 70–100%</td></tr>
-<tr><td>备件损耗</td><td class="num">5–8</td><td>设备价值 2–3%/年：风扇/电源/硬盘/显卡维修更换</td></tr>
-<tr><td>机房机柜分摊</td><td class="num">5–10</td><td>自有机柜与制冷设备折旧，仅摊本业务实际占用的 2 柜</td></tr>
-<tr><td><b>后台保障人力</b></td><td class="num">20–40</td><td>7×24 值守 + 驻场硬件维护（6 组算力团队按当量分摊 1–2 人）</td></tr>
-<tr><td>网络带宽</td><td class="num">10–25</td><td>国内出口 500–800Mbps 分摊（云剪辑/在线审片画面流是大头）</td></tr>
-<tr><td>安全与等保</td><td class="num">5–10</td><td>等保三级测评 + 安全设备摊销（数据托管业务前置条件）</td></tr>
-<tr><td><b>TCO 合计</b></td><td class="num"><b>123–184</b></td><td>折旧占 55–60%——<b>跑不跑都在烧，只有跑满才能摊薄</b></td></tr>
-</table>
-<h3>利用率 → 卡时全摊成本（TCO 反推）</h3>
-<table>
-<tr><th>平均利用率</th><th class="num">H100 全摊/卡时</th><th class="num">5090 全摊/卡时</th><th>对外价毛利</th></tr>
-<tr><td>50%（不达标）</td><td class="num">¥21–26</td><td class="num">¥8–9</td><td>57–74%</td></tr>
-<tr><td>70%（及格线）</td><td class="num">¥15–19</td><td class="num">¥5.5–6.5</td><td>68–81%</td></tr>
-<tr><td><b>95%（四工厂目标）</b></td><td class="num"><b>¥11–14</b></td><td class="num"><b>¥4–5</b></td><td><b>77–86%</b></td></tr>
-</table>
-<div class="warn" style="margin-top:14px">
-<b>口径对账：</b>年度预算用<b>现金口径</b>（电费/耗材/备件约 50 万/年，折旧不出现金）；<b>对外定价必须用本表全成本口径</b>，否则卡时报价看着赚钱实际亏折旧。两个口径并存，各管各的用途。
-</div>
-</div>
 
 <div class="card reveal">
 <h3>数字资产托管（全客户统一 · 数据不落地）</h3>
@@ -642,7 +606,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <tr><td>视频池</td><td class="num">两段式：720p 海选 ¥1.5–2/s + 4K 终稿 ¥7–9/s</td></tr>
 <tr><td>LoRA 定制</td><td class="num">0.5–2 万/个</td></tr>
 </table>
-<p class="small">另备<b>整线承包</b>模式：¥800–2,000/成片分钟（含生成+工作流+审片 QC，不含编剧导演）——720p 海选把承包毛利抬到 45–60%，是消化 Seedance 保底最快的形态。</p>
+<p class="small">另备<b>整线承包</b>模式：¥800–2,000/成片分钟（含生成+工作流+审片 QC，不含编剧导演）——由平台承担生成与工作流全流程，制作方只需提出创意要求与验收成片。</p>
 <div class="no">01</div>
 </div>
 
